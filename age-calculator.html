@@ -1,85 +1,111 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age/Gae Calculator</title>
+<title>Age Calculator – MegaToolsOnline</title>
+<meta name="description" content="Modern Age Calculator tool – calculate your age online easily.">
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #00bcd4, #e0f7fa);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
   }
+
   .calculator {
     background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    padding: 50px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     text-align: center;
-    width: 320px;
-  }
-  input, button {
+    max-width: 450px;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    position: relative;
+  }
+
+  .calculator h1 {
+    margin-bottom: 30px;
+    color: #004d40;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calculator h1 i {
+    margin-right: 10px;
+    color: #ff9800;
+  }
+
+  input[type="date"] {
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #00796b;
+    margin-bottom: 25px;
     font-size: 16px;
   }
+
   button {
-    background-color: #00bcd4;
-    color: white;
+    background: #00796b;
+    color: #fff;
     border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
     cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
   }
+
   button:hover {
-    background-color: #0097a7;
+    background: #004d40;
+    transform: scale(1.05);
   }
-  .result {
-    margin-top: 15px;
-    font-size: 18px;
+
+  #result {
+    margin-top: 30px;
+    font-size: 20px;
     font-weight: bold;
-    color: #00796b;
+    color: #004d40;
+  }
+
+  @media(max-width: 500px) {
+    .calculator { padding: 30px 20px; }
+    input[type="date"], button { font-size: 14px; padding: 12px; }
+    .calculator h1 { font-size: 2rem; }
   }
 </style>
 </head>
 <body>
 
 <div class="calculator">
-  <h2>Age / Gae Calculator</h2>
-  <label for="dob">Apni Paidaish ki Tareekh (YYYY-MM-DD):</label>
-  <input type="date" id="dob">
-  <button onclick="calculateAge()">Calculate Age</button>
-  <div class="result" id="result"></div>
+  <h1><i class="fa fa-birthday-cake"></i>Age Calculator</h1>
+  <input type="date" id="birthdate" placeholder="Enter Your Birth Date">
+  <button onclick="calculateAge()"><i class="fa fa-calculator"></i> Calculate</button>
+  <div id="result"></div>
 </div>
 
 <script>
 function calculateAge() {
-  const dob = document.getElementById("dob").value;
-  if(!dob) {
-    alert("Kripya apni date enter karein");
+  const birthDate = document.getElementById('birthdate').value;
+  if(!birthDate) {
+    alert("Please enter your birth date");
     return;
   }
-  const dobDate = new Date(dob);
   const today = new Date();
-
-  let ageYears = today.getFullYear() - dobDate.getFullYear();
-  let ageMonths = today.getMonth() - dobDate.getMonth();
-  let ageDays = today.getDate() - dobDate.getDate();
-
-  if(ageDays < 0){
-    ageMonths--;
-    ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+  const birth = new Date(birthDate);
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+  if(monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age--;
   }
-  if(ageMonths < 0){
-    ageYears--;
-    ageMonths += 12;
-  }
-
-  document.getElementById("result").innerHTML = `Aapki Age: ${ageYears} Saal, ${ageMonths} Mahine, ${ageDays} Din`;
+  document.getElementById('result').innerHTML = `You are <span style="color:#ff9800">${age}</span> years old.`;
 }
 </script>
 
