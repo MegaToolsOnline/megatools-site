@@ -5,21 +5,136 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MegaToolsOnline – Free Online Tools</title>
 <meta name="description" content="MegaToolsOnline: Free online calculators, converters, and fun tools like Age Calculator, BMI Calculator, QR Generator, Word Counter, and more.">
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  body { font-family: Arial; background:#e0f7fa; padding:20px; text-align:center; }
-  h1 { color:#00796b; }
-  ul { list-style-type:none; padding:0; }
-  li { margin:15px 0; }
-  a { text-decoration:none; color:#00bcd4; font-weight:bold; font-size:18px; }
-  a:hover { color:#0097a7; }
+  /* General Styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #00bcd4, #e0f7fa);
+    color: #004d40;
+  }
+  a { text-decoration: none; }
+
+  /* Hero Section */
+  .hero {
+    padding: 50px 20px 30px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  /* Tools Section */
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  .tool-card {
+    background: #00796b;
+    color: #fff;
+    width: 220px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .tool-card:hover { transform: translateY(-5px); background: #004d40; }
+  .tool-card a { display: block; color: #fff; font-size: 18px; padding: 30px 20px; }
+  .tool-card i { font-size: 40px; margin-bottom: 15px; }
+
+  /* Sections */
+  section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+  h2 { text-align: center; margin-bottom: 20px; }
+  p { line-height: 1.6; }
+
+  /* Contact Form */
+  .contact-form { max-width: 500px; margin: auto; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #00796b;
+  }
+  .contact-form button {
+    background: #00796b; color: #fff; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;
+  }
+  .contact-form button:hover { background: #004d40; }
+
+  /* Footer */
+  footer {
+    margin-top: 50px;
+    padding: 20px;
+    background: #004d40;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .tools { flex-direction: column; align-items: center; }
+  }
 </style>
 </head>
 <body>
-<h1>Welcome to MegaToolsOnline</h1>
-<p>Select a tool below:</p>
-<ul>
-  <li><a href="age-calculator.html">Age / Gae Calculator</a></li>
-  <!-- Agle tools ke liye links yahan add karenge -->
-</ul>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1>MegaToolsOnline</h1>
+  <p>Free Online Tools: Calculate, Convert, Generate – All in One Place!</p>
+</div>
+
+<!-- Tools Section -->
+<section>
+  <h2>Our Tools</h2>
+  <div class="tools">
+    <div class="tool-card">
+      <a href="age-calculator.html"><i class="fa fa-birthday-cake"></i> Age / Gae Calculator</a>
+    </div>
+    <!-- Next tools can be added here -->
+    <!-- Example: BMI Calculator -->
+    <!--
+    <div class="tool-card">
+      <a href="bmi-calculator.html"><i class="fa fa-heartbeat"></i> BMI Calculator</a>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- About Section -->
+<section>
+  <h2>About MegaToolsOnline</h2>
+  <p>MegaToolsOnline is your free international tools hub! We provide simple, fast, and accurate calculators, converters, and generators to make your online tasks easy and fun. All tools are completely free and accessible from anywhere in the world.</p>
+</section>
+
+<!-- Policy Section -->
+<section>
+  <h2>Privacy & Policy</h2>
+  <p>We respect your privacy. We do not store your personal data. All tools are safe, secure, and free to use. By using our website, you agree to our terms of service.</p>
+</section>
+
+<!-- Contact Section -->
+<section>
+  <h2>Contact Us</h2>
+  <p>If you have questions, suggestions, or want to report issues, please contact us below:</p>
+  <form class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 MegaToolsOnline. All rights reserved.
+</footer>
+
 </body>
 </html>
