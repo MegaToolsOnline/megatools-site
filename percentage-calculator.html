@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator | MegaToolsOnline</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background: rgba(255,255,255,0.1);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(255,255,255,0.2);
+        animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+        from {opacity: 0; transform: scale(0.9);}
+        to {opacity: 1; transform: scale(1);}
+    }
+    h1 {
+        font-size: 26px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    input {
+        width: 90%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        margin: 10px 0;
+    }
+    button {
+        padding: 12px 20px;
+        background: #ff9f1a;
+        border: none;
+        border-radius: 8px;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #e68a00;
+    }
+    .result {
+        margin-top: 15px;
+        font-size: 18px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1><i class="fa-solid fa-percent"></i> Percentage Calculator</h1>
+
+    <input type="number" id="total" placeholder="Enter total value">
+    <input type="number" id="percent" placeholder="Enter percentage (%)">
+    
+    <button onclick="calculatePercentage()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculatePercentage() {
+    let total = parseFloat(document.getElementById("total").value);
+    let percent = parseFloat(document.getElementById("percent").value);
+
+    if (isNaN(total) || isNaN(percent)) {
+        document.getElementById("result").innerHTML = "Please enter both values.";
+        return;
+    }
+
+    let result = (total * percent / 100).toFixed(2);
+
+    document.getElementById("result").innerHTML =
+        `<b>${percent}% of ${total} = ${result}</b>`;
+}
+</script>
+
+</body>
+</html>
