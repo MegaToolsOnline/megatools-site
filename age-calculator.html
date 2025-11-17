@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age/Gae Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .calculator {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 320px;
+  }
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0097a7;
+  }
+  .result {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00796b;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <h2>Age / Gae Calculator</h2>
+  <label for="dob">Apni Paidaish ki Tareekh (YYYY-MM-DD):</label>
+  <input type="date" id="dob">
+  <button onclick="calculateAge()">Calculate Age</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateAge() {
+  const dob = document.getElementById("dob").value;
+  if(!dob) {
+    alert("Kripya apni date enter karein");
+    return;
+  }
+  const dobDate = new Date(dob);
+  const today = new Date();
+
+  let ageYears = today.getFullYear() - dobDate.getFullYear();
+  let ageMonths = today.getMonth() - dobDate.getMonth();
+  let ageDays = today.getDate() - dobDate.getDate();
+
+  if(ageDays < 0){
+    ageMonths--;
+    ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+  }
+  if(ageMonths < 0){
+    ageYears--;
+    ageMonths += 12;
+  }
+
+  document.getElementById("result").innerHTML = `Aapki Age: ${ageYears} Saal, ${ageMonths} Mahine, ${ageDays} Din`;
+}
+</script>
+
+</body>
+</html>
