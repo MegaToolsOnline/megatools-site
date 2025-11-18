@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to JPG Converter - MegaToolsOnline</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg,#43cea2,#185a9d);
+    color:#fff;
+}
+
+.container {
+    max-width:700px;
+    margin:50px auto;
+    background: rgba(0,0,0,0.15);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(30px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.icon {
+    font-size:50px;
+    text-align:center;
+    display:block;
+    margin-bottom:15px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+}
+
+h2{text-align:center;margin-bottom:20px;}
+
+input[type="file"] {
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+button {
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    margin:8px 0;
+    font-weight:bold;
+    cursor:pointer;
+    background:#00f2fe;
+    color:#000;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#4facfe;
+    color:#fff;
+    transform: scale(1.05);
+}
+
+.result-box{
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background: rgba(0,0,0,0.25);
+    font-size:16px;
+    text-align:center;
+    min-height:60px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <i class="fa-solid fa-file-pdf icon"></i>
+    <h2>PDF to JPG Converter</h2>
+
+    <input type="file" id="pdfFile" accept="application/pdf" />
+    <button onclick="convertPDF()">Convert to JPG</button>
+
+    <div class="result-box" id="outputBox">Select a PDF file to convert.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+function convertPDF(){
+    const file = document.getElementById('pdfFile').files[0];
+    const output = document.getElementById('outputBox');
+    output.innerHTML = '';
+
+    if(!file){
+        output.innerText = '❌ Please select a PDF file!';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e){
+        const typedarray = new Uint8Array(e.target.result);
+
+        pdfjsLib.getDocument(typedarray).promise.then(pdf=>{
+            pdf.getPage(1).then(page=>{
+                const viewport = page.getViewport({scale:2});
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                page.render({canvasContext:context, viewport:viewport}).promise.then(()=>{
+                    const img = document.createElement('img');
+                    img.src = canvas.toDataURL('image/jpeg');
+                    img.style.width = '100%';
+                    output.appendChild(img);
+                });
+            });
+        }).catch(err=>{
+            output.innerText = "❌ Error processing PDF!";
+        });
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+</script>
+
+<!-- ⭐ SEO CONTENT -->
+<div style="max-width:700px; margin:40px auto; color:#fff; font-size:15px;">
+<h2>PDF to JPG Converter Online Tool</h2>
+<p>
+The PDF to JPG Converter allows you to quickly convert any PDF file into a high-quality JPG image online.  
+Perfect for presentations, websites, and graphic design work. No software installation required.
+</p>
+
+<h3>Why Use This Tool?</h3>
+<ul>
+<li>Fast and simple conversion</li>
+<li>Supports high-resolution JPG output</li>
+<li>Works on all devices</li>
+<li>Completely free and online</li>
+<li>No personal data collected</li>
+</ul>
+
+<h3>Keywords:</h3>
+<p>pdf to jpg, pdf to image converter, online pdf to jpg, free pdf converter, pdf converter online, pdf to jpg online</p>
+</div>
+
+</body>
+</html>
