@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoder & Decoder - MegaToolsOnline</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1d2b64, #f8cdda);
+        color: white;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: rgba(255,255,255,0.12);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 1.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(30px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .icon {
+        font-size: 45px;
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+        animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotateY(0deg); }
+        100% { transform: rotateY(360deg); }
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 15px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #00f2fe;
+        color: #000;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #4facfe;
+        color: #fff;
+        transform: scale(1.04);
+    }
+
+    .result-box {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 12px;
+        background: rgba(0,0,0,.25);
+        font-size: 16px;
+        min-height: 100px;
+        white-space: pre-wrap;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <i class="fa-solid fa-link icon"></i>
+    <h2>URL Encoder & Decoder</h2>
+
+    <textarea id="inputText" placeholder="Enter URL or text to encode/decode..."></textarea>
+
+    <button onclick="encodeURL()">🔐 Encode URL</button>
+    <button onclick="decodeURL()">🔓 Decode URL</button>
+
+    <h3>Result:</h3>
+    <div class="result-box" id="outputBox"></div>
+</div>
+
+<script>
+function encodeURL() {
+    const text = document.getElementById("inputText").value;
+    const encoded = encodeURIComponent(text);
+    document.getElementById("outputBox").innerText = encoded;
+}
+
+function decodeURL() {
+    try {
+        const text = document.getElementById("inputText").value;
+        const decoded = decodeURIComponent(text);
+        document.getElementById("outputBox").innerText = decoded;
+    } catch (e) {
+        document.getElementById("outputBox").innerText = "❌ Invalid URL encoding!";
+    }
+}
+</script>
+
+<!-- ⭐ SEO CONTENT SECTION -->
+<div style="max-width: 700px; margin: 35px auto; padding: 15px; color: white;">
+    <h2>Free Online URL Encoder & Decoder Tool</h2>
+    <p>
+        This URL Encoder and Decoder tool allows you to quickly convert any text into a URL-safe format using percent-encoding.  
+        You can also decode any encoded URL back into readable text.  
+        This tool is useful for web developers, SEO experts, and anyone working with web data.
+    </p>
+
+    <h3>Why Use This Tool?</h3>
+    <ul>
+        <li>Fast URL encoding</li>
+        <li>Instant decoding</li>
+        <li>Mobile-friendly design</li>
+        <li>No data stored</li>
+        <li>Perfect for SEO, APIs, and web development</li>
+    </ul>
+
+    <h3>Keywords:</h3>
+    <p>
+        url encoder, url decoder, encode url online, decode url, online url encoding tool, url converter, percent encode tool
+    </p>
+</div>
+
+</body>
+</html>
