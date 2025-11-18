@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JSON Formatter & Validator | MegaToolsOnline</title>
+<meta name="description" content="Free JSON Formatter & Validator — prettify, minify, validate and download JSON. Syntax highlighting, error location and copy to clipboard." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root{
+    --bg1:#071428; --bg2:#0b2740;
+    --card: rgba(255,255,255,0.04);
+    --accent1:#4facfe; --accent2:#00f2fe;
+    --text:#e7fbff;
+    --muted: rgba(231,251,255,0.7);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:Inter,system-ui,Arial,sans-serif;
+    background: linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:var(--text); -webkit-font-smoothing:antialiased; padding:22px;
+  }
+  .wrap{max-width:1100px;margin:0 auto}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;color:#04161a;font-size:22px}
+  h1{margin:0;font-size:20px}
+  .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6); margin-top:16px}
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
+  @media(max-width:980px){.grid{grid-template-columns:1fr}}
+  textarea{
+    width:100%; min-height:360px; resize:vertical; padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+    background:rgba(255,255,255,0.02); color:var(--text); font-size:14px; line-height:1.5; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+  }
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;padding:10px 12px;border-radius:10px;color:#04161a;font-weight:700;cursor:pointer}
+  .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+  .small{padding:8px 10px;font-size:13px}
+  .result-box{margin-top:12px;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005));min-height:240px;overflow:auto}
+  pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;font-size:13px}
+  .muted{color:var(--muted)}
+  .meta{margin-top:10px;color:rgba(231,251,255,0.85);font-size:14px}
+
+  /* syntax colors */
+  .tok-key { color:#ffd966; }       /* object keys */
+  .tok-str { color:#7bed9f; }       /* string */
+  .tok-num { color:#ffb86b; }       /* number */
+  .tok-bool { color:#ff6b6b; }      /* boolean */
+  .tok-null { color:#8bd3ff; }      /* null */
+  .tok-punc { color:#cbd5e1; }      /* punctuation */
+
+  .error { background: rgba(255,90,90,0.08); border-left:3px solid rgba(255,90,90,0.6); padding:8px; border-radius:6px; margin-top:8px; color:#ffd6d6;}
+  .footer{margin-top:14px;text-align:center;color:rgba(231,251,255,0.6)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden><i class="fa fa-code"></i></div>
+        <div>
+          <h1>JSON Formatter & Validator</h1>
+          <div class="muted">Prettify, minify, validate, highlight & download JSON</div>
+        </div>
+      </div>
+      <nav><a href="index.html" style="color:var(--text);text-decoration:none;border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,0.03)">Home</a></nav>
+    </header>
+
+    <div class="card">
+      <div class="grid">
+        <main>
+          <textarea id="inputJson" placeholder='Paste JSON here — e.g. {"name":"Wasif","age":30}'></textarea>
+          <div class="controls">
+            <button class="btn" id="formatBtn"><i class="fa fa-brackets-curly"></i> Format</button>
+            <button class="btn" id="minifyBtn">Minify</button>
+            <button class="btn secondary" id="validateBtn">Validate</button>
+            <button class="btn secondary" id="clearBtn">Clear</button>
+            <button class="btn small" id="copyBtn"><i class="fa fa-copy"></i> Copy</button>
+            <button class="btn small" id="downloadBtn"><i class="fa fa-download"></i> Download</button>
+          </div>
+
+          <div id="errorBox" style="display:none" class="error"></div>
+
+          <div class="result-box card" id="resultBox" aria-live="polite">
+            <pre id="resultPre" class="muted">Formatted JSON will appear here with syntax highlighting.</pre>
+          </div>
+        </main>
+
+        <aside>
+          <div class="card">
+            <div style="font-weight:700;margin-bottom:8px">Options</div>
+            <div style="margin-bottom:8px">
+              <label class="muted">Indentation</label>
+              <select id="indent">
+                <option value="2">2 spaces</option>
+                <option value="4" selected>4 spaces</option>
+                <option value="1">1 space</option>
+                <option value="tab">Tab</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:8px">
+              <label class="muted">Sort object keys</label><br>
+              <input type="checkbox" id="sortKeys"> <span class="muted">(alphabetical)</span>
+            </div>
+
+            <div style="margin-bottom:8px">
+              <label class="muted">Auto-format on paste</label><br>
+              <input type="checkbox" id="autoFormat" checked>
+            </div>
+
+            <div style="margin-top:10px;color:var(--muted);font-size:13px">
+              Tip: Use Format to prettify, Minify to remove whitespace, Validate to find syntax errors.
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:8px">Quick Examples</div>
+            <div style="font-size:13px;color:var(--muted)">
+              <pre style="white-space:pre-wrap;margin:0">{"user":"Wasif","role":"admin"}</pre>
+              <div style="margin-top:6px">Paste and click <strong>Format</strong>.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- SEO Content -->
+      <section style="margin-top:14px;color:rgba(231,251,255,0.9)">
+        <h2 style="color:#ffd966">About This JSON Formatter</h2>
+        <p>This <strong>JSON Formatter & Validator</strong> helps developers and content creators prettify JSON, minify for production, validate syntax, and download or copy the result. The tool runs entirely in your browser — fast and private. It includes syntax highlighting and helpful error messages showing approximate error positions.</p>
+
+        <h2 style="color:#ffd966;margin-top:12px">How to Use</h2>
+        <ol>
+          <li>Paste your JSON into the input box.</li>
+          <li>Choose indentation and options (sort keys, auto-format).</li>
+          <li>Click <strong>Format</strong> to prettify, <strong>Minify</strong> to compress, or <strong>Validate</strong> to check for errors.</li>
+          <li>Use Copy or Download to export the JSON.</li>
+        </ol>
+
+        <h2 style="color:#ffd966;margin-top:12px">FAQs</h2>
+        <p><strong>Q:</strong> Is the JSON uploaded to any server?<br><strong>A:</strong> No — everything runs locally in your browser.</p>
+        <p><strong>Q:</strong> Can this sort keys?<br><strong>A:</strong> Yes — enable "Sort object keys" before formatting to arrange object keys alphabetically.</p>
+
+        <h3 style="color:#ffd966;margin-top:12px">SEO Keywords</h3>
+        <p>json formatter, json validator, prettify json, minify json, json highlight, online json formatter</p>
+      </section>
+    </div>
+
+    <div class="footer">© 2025 MegaToolsOnline • All tools run in your browser</div>
+  </div>
+
+<script>
+  const input = document.getElementById('inputJson');
+  const resultPre = document.getElementById('resultPre');
+  const errorBox = document.getElementById('errorBox');
+  const indentEl = document.getElementById('indent');
+  const sortKeysEl = document.getElementById('sortKeys');
+  const autoFormatEl = document.getElementById('autoFormat');
+
+  function escapeHtml(str){
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function syntaxHighlight(jsonStr){
+    // simple regex-based highlighter for common JSON tokens
+    let s = escapeHtml(jsonStr);
+    // keys
+    s = s.replace(/(&quot;[^\&]*?&quot;)(\s*):/g, '<span class="tok-key">$1</span>$2:');
+    // strings
+    s = s.replace(/:?\s*(&quot;.*?&quot;)/g, val => {
+      if(val.includes(':')) return val; // skip keys already colored
+      return val.replace(/(&quot;.*?&quot;)/g, '<span class="tok-str">$1</span>');
+    });
+    // numbers
+    s = s.replace(/(-?\b\d+\.?\d*(?:[eE][+-]?\d+)?\b)/g, '<span class="tok-num">$1</span>');
+    // booleans
+    s = s.replace(/\b(true|false)\b/g, '<span class="tok-bool">$1</span>');
+    // null
+    s = s.replace(/\bnull\b/g, '<span class="tok-null">null</span>');
+    // punctuation
+    s = s.replace(/([{}\[\],:])/g, '<span class="tok-punc">$1</span>');
+    return s;
+  }
+
+  function sortKeys(obj){
+    if(Array.isArray(obj)) return obj.map(sortKeys);
+    if(obj && typeof obj === 'object'){
+      const sorted = {};
+      Object.keys(obj).sort().forEach(k => {
+        sorted[k] = sortKeys(obj[k]);
+      });
+      return sorted;
+    }
+    return obj;
+  }
+
+  function formatJson(){
+    clearError();
+    const raw = input.value.trim();
+    if(!raw) { resultPre.innerText = ''; return; }
+    try {
+      const parsed = JSON.parse(raw);
+      const finalObj = sortKeysEl.checked ? sortKeys(parsed) : parsed;
+      const indent = indentEl.value === 'tab' ? '\t' : parseInt(indentEl.value || 4);
+      const str = JSON.stringify(finalObj, null, indent);
+      resultPre.innerHTML = syntaxHighlight(str.replace(/"/g,'&quot;'));
+    } catch(e) {
+      showError(e);
+    }
+  }
+
+  function minifyJson(){
+    clearError();
+    const raw = input.value.trim();
+    if(!raw) { resultPre.innerText = ''; return; }
+    try {
+      const parsed = JSON.parse(raw);
+      const finalObj = sortKeysEl.checked ? sortKeys(parsed) : parsed;
+      const str = JSON.stringify(finalObj);
+      resultPre.innerHTML = syntaxHighlight(str.replace(/"/g,'&quot;'));
+    } catch(e) {
+      showError(e);
+    }
+  }
+
+  function validateJson(){
+    clearError();
+    const raw = input.value.trim();
+    if(!raw){ showError('No JSON to validate'); return; }
+    try{
+      JSON.parse(raw);
+      resultPre.innerHTML = '<span style="color:#7bed9f">Valid JSON ✓</span>';
+    } catch(e){
+      showError(e);
+    }
+  }
+
+  function showError(e){
+    errorBox.style.display = 'block';
+    const msg = typeof e === 'string' ? e : (e.message || 'Invalid JSON');
+    errorBox.innerText = 'Error: ' + msg;
+    resultPre.innerHTML = '';
+  }
+
+  function clearError(){
+    errorBox.style.display = 'none';
+    errorBox.innerText = '';
+  }
+
+  function copyResult(){
+    const txt = getResultText();
+    if(!txt) return;
+    navigator.clipboard.writeText(txt).then(()=> {
+      const btn = document.getElementById('copyBtn');
+      btn.innerHTML = '<i class="fa fa-check"></i> Copied';
+      setTimeout(()=> btn.innerHTML = '<i class="fa fa-copy"></i> Copy', 1200);
+    });
+  }
+
+  function downloadResult(){
+    const txt = getResultText();
+    if(!txt) return;
+    const blob = new Blob([txt], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'data.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function getResultText(){
+    // if resultPre is empty, try to format first
+    const r = resultPre.innerText || '';
+    return r.trim() ? r.replace(/\u00A0/g,' ') : null;
+  }
+
+  document.getElementById('formatBtn').addEventListener('click', formatJson);
+  document.getElementById('minifyBtn').addEventListener('click', minifyJson);
+  document.getElementById('validateBtn').addEventListener('click', validateJson);
+  document.getElementById('clearBtn').addEventListener('click', ()=>{
+    input.value = ''; resultPre.innerHTML=''; clearError();
+  });
+  document.getElementById('copyBtn').addEventListener('click', copyResult);
+  document.getElementById('downloadBtn').addEventListener('click', downloadResult);
+
+  // auto-format on paste
+  input.addEventListener('paste', (e)=>{
+    if(autoFormatEl.checked){
+      setTimeout(formatJson, 120);
+    }
+  });
+
+  // keyboard shortcuts
+  input.addEventListener('keydown', (e)=>{
+    if((e.ctrlKey||e.metaKey) && e.key === 'Enter'){ formatJson(); }
+    if((e.ctrlKey||e.metaKey) && e.key === 'm'){ minifyJson(); }
+  });
+
+  // initialize with example
+  input.value = '{"name":"MegaToolsOnline","tools":["json-formatter","image-compressor"],"active":true}';
+  formatJson();
+</script>
+</body>
+</html>
