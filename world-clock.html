@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Clock Tool | Live Time Zones</title>
+  <meta name="description" content="Best animated World Clock tool with live time zones, smooth animations, colorful UI, and SEO‑optimized performance for high search visibility." />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .clock-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .clock {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      width: 260px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: popIn 0.8s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 10px;
+      animation: rotate 4s infinite linear;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌍 Animated World Clock Tool</h1>
+  <p>Check the current time of any country with live animation & smooth effects.</p>
+
+  <div>
+    <select id="timezoneSelect" onchange="updateClock()">
+      <option value="Asia/Karachi">Pakistan (Asia/Karachi)</option>
+      <option value="Asia/Dubai">Dubai (Asia/Dubai)</option>
+      <option value="Asia/Kolkata">India (Asia/Kolkata)</option>
+      <option value="Europe/London">London (Europe/London)</option>
+      <option value="America/New_York">New York (America/New_York)</option>
+      <option value="Australia/Sydney">Sydney (Australia/Sydney)</option>
+    </select>
+  </div>
+
+  <div class="clock-container">
+    <div class="clock">
+      <div class="icon">⏰</div>
+      <h2 id="clockTitle">Pakistan Time</h2>
+      <h1 id="clockTime"></h1>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const timezone = document.getElementById('timezoneSelect').value;
+      const now = new Date().toLocaleString("en-US", { timeZone: timezone });
+      const time = new Date(now);
+
+      document.getElementById('clockTime').innerText = time.toLocaleTimeString();
+      document.getElementById('clockTitle').innerText =
+        document.getElementById('timezoneSelect').selectedOptions[0].text;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+
+
+  <!-- SEO CONTENT -->
+  <section style="max-width:900px;margin:28px auto;color:#e7fbff;padding:18px;">
+    <h2 style="color:#ffd966;margin-bottom:6px;">About This World Clock Tool</h2>
+    <p style="line-height:1.6;">This <strong>World Clock</strong> tool shows accurate local time for major cities and time zones. It runs entirely in your browser using standard JavaScript time zone support, ensuring <em>fast, private, and reliable</em> results without any server calls. Use it to quickly check current times across the world — perfect for travelers, remote teams, and international meetings.</p>
+
+    <h3 style="color:#ffd966;margin-top:14px;">How to Use</h3>
+    <ol style="line-height:1.6;text-align:left;">
+      <li>Select a time zone or city from the dropdown menu.</li>
+      <li>The clock updates every second and shows the current local time for the chosen zone.</li>
+      <li>Use the dropdown to switch between cities like Karachi, Dubai, London, New York and Sydney.</li>
+      <li>For accuracy, make sure your device clock and timezone settings are correct.</li>
+    </ol>
+
+    <h3 style="color:#ffd966;margin-top:14px;">SEO Keywords</h3>
+    <p style="line-height:1.6;">World clock, time zone converter, current time in (city), local time now, time zone tool, timezone converter, Pakistan time, UTC time</p>
+
+    <h3 style="color:#ffd966;margin-top:14px;">Frequently Asked Questions (FAQs)</h3>
+    <p style="line-height:1.6;"><strong>Q:</strong> Is this World Clock tool free to use?<br>
+    <strong>A:</strong> Yes — it is completely free and runs in your browser with no signup required.</p>
+
+    <p style="line-height:1.6;"><strong>Q:</strong> Does it require internet access?<br>
+    <strong>A:</strong> The tool runs locally, but to ensure your device time is correct it is recommended to have internet access for OS time sync.</p>
+
+    <p style="line-height:1.6;"><strong>Q:</strong> Can I add more cities?<br>
+    <strong>A:</strong> Yes — you can add more time zones to the dropdown by editing the HTML list of options.</p>
+
+    <p style="margin-top:12px;line-height:1.6;">If you want, I can also add a small list of common business meeting time conversions (e.g., convert 9:00 AM PST to local time in Karachi) and an SEO-friendly sitemap entry for this page.</p>
+  </section>
+
+</body>
+</html>
