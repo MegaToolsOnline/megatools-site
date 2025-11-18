@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer | MegaToolsOnline</title>
+<meta name="description" content="Set a countdown timer easily with our free online Timer tool. Start, pause, and reset for any activity.">
+
+<style>
+:root{
+  --bg1:#0a0f1e; --bg2:#1a2a44;
+  --accent:#00f2fe; --text:#e7fbff;
+}
+body{
+  margin:0; font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color: var(--text);
+  display: flex; justify-content:center; align-items:center; min-height:100vh; padding:20px;
+}
+.container{
+  background: rgba(255,255,255,0.05); border-radius:20px; padding:25px; width:100%; max-width:400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align:center; animation:slideUp 0.8s ease-out;
+}
+@keyframes slideUp{from{opacity:0; transform:translateY(40px);}to{opacity:1; transform:translateY(0);}}
+h2{color:var(--accent); text-shadow: 0 0 10px var(--accent);}
+input{width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none; outline:none; font-size:16px;}
+button{width:100%; padding:12px; margin-top:10px; border:none; border-radius:10px; background:var(--accent); color:#111; font-weight:bold; cursor:pointer; transition:0.3s;}
+button:hover{transform: scale(1.05); background:#00bcd4;}
+.timer-display{font-size:48px; margin:20px 0; letter-spacing:2px;}
+.meta{font-size:14px; margin-top:20px; color:rgba(231,251,255,0.8); text-align:left;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Countdown Timer</h2>
+
+  <label>Set time (minutes)</label>
+  <input type="number" id="minutesInput" placeholder="Enter minutes" value="1">
+  <div class="timer-display" id="timerDisplay">00:00</div>
+
+  <button onclick="startTimer()">Start</button>
+  <button onclick="pauseTimer()">Pause</button>
+  <button onclick="resetTimer()">Reset</button>
+
+  <!-- SEO Content -->
+  <div class="meta">
+    <h2>About This Tool</h2>
+    <p>The Timer tool allows you to set a countdown timer for any activity like workouts, study, or cooking. Start, pause, and reset easily with a modern interface. Free and online tool accessible on any device.</p>
+
+    <h2>How to Use</h2>
+    <ol>
+      <li>Enter the time in minutes.</li>
+      <li>Click "Start" to begin the countdown.</li>
+      <li>Click "Pause" to pause the timer.</li>
+      <li>Click "Reset" to reset the timer back to 00:00.</li>
+    </ol>
+
+    <h2>FAQs</h2>
+    <p><strong>Q:</strong> Is this Timer free?<br>
+       <strong>A:</strong> Yes, it is completely free to use online.</p>
+    <p><strong>Q:</strong> Can I use it on mobile?<br>
+       <strong>A:</strong> Yes, fully responsive and works on all devices.</p>
+  </div>
+</div>
+
+<script>
+let timerInterval;
+let remainingTime = 0;
+
+function updateDisplay() {
+  const minutes = Math.floor(remainingTime/60).toString().padStart(2,'0');
+  const seconds = (remainingTime%60).toString().padStart(2,'0');
+  document.getElementById('timerDisplay').innerText = `${minutes}:${seconds}`;
+}
+
+function startTimer() {
+  if(remainingTime === 0){
+    const minutes = parseInt(document.getElementById('minutesInput').value);
+    if(!minutes || minutes<=0){ alert("Enter valid minutes"); return; }
+    remainingTime = minutes*60;
+  }
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    if(remainingTime<=0){
+      clearInterval(timerInterval);
+      alert("Time's up!");
+    } else {
+      remainingTime--;
+      updateDisplay();
+    }
+  },1000);
+}
+
+function pauseTimer(){
+  clearInterval(timerInterval);
+}
+
+function resetTimer(){
+  clearInterval(timerInterval);
+  remainingTime=0;
+  updateDisplay();
+}
+</script>
+
+</body>
+</html>
