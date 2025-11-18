@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Image Compressor | MegaToolsOnline</title>
+<meta name="description" content="Free Image Compressor — compress PNG/JPEG/WebP images in your browser. Fast client-side compression, preview, size compare and download." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg1:#071428; --bg2:#0b2740;
+    --card: rgba(255,255,255,0.04);
+    --accent1:#4facfe; --accent2:#00f2fe;
+    --text:#e7fbff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:Inter,system-ui,Arial,sans-serif;
+    background: linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:var(--text); -webkit-font-smoothing:antialiased; padding:28px;
+  }
+  .wrap{max-width:980px;margin:0 auto}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;color:#04161a;font-size:22px}
+  h1{margin:0;font-size:20px}
+  .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6); margin-top:18px}
+  .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  input[type=file]{display:block;margin:10px 0}
+  .controls{display:flex;flex-direction:column;gap:10px}
+  label{font-size:14px}
+  select,input[type=range]{width:100%}
+  .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;padding:10px 12px;border-radius:10px;color:#04161a;font-weight:700;cursor:pointer}
+  .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+  .preview{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:12px;text-align:center}
+  img{max-width:100%;height:auto;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+  .sizes{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:13px}
+  .info{margin-top:8px;font-size:13px;color:rgba(231,251,255,0.8)}
+  .spinner{width:46px;height:46px;border-radius:50%;display:inline-block;border:4px solid rgba(255,255,255,0.06);border-top-color:var(--accent1);animation:spin 1s linear infinite; margin:8px auto; display:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .meta{margin-top:14px;color:rgba(231,251,255,0.9)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden><i class="fa fa-image"></i></div>
+        <div>
+          <h1>Image Compressor</h1>
+          <div style="font-size:13px;color:rgba(231,251,255,0.8)">Compress images in your browser — fast, private & free.</div>
+        </div>
+      </div>
+      <nav><a href="index.html" style="color:var(--text);text-decoration:none;border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,0.03)">Home</a></nav>
+    </header>
+
+    <div class="card">
+      <div class="grid">
+        <main>
+          <div class="controls">
+            <label><strong>Select image (JPEG / PNG / WebP)</strong></label>
+            <input id="fileInput" type="file" accept="image/*">
+
+            <label><strong>Target format</strong></label>
+            <select id="formatSelect">
+              <option value="image/jpeg">JPEG (.jpg) — compatible</option>
+              <option value="image/webp">WebP (.webp) — best compression</option>
+              <option value="image/png">PNG (.png) — lossless</option>
+            </select>
+
+            <label><strong>Quality (for JPEG / WebP)</strong> <span id="qualityLabel">80%</span></label>
+            <input id="qualityRange" type="range" min="10" max="100" value="80">
+
+            <label><strong>Max width (px) — optional (resize)</strong></label>
+            <input id="maxWidth" type="number" placeholder="e.g. 1920">
+
+            <div style="display:flex;gap:10px">
+              <button class="btn" id="compressBtn">Compress</button>
+              <button class="btn secondary" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="info">Tip: Choose WebP for smallest files (modern browsers). Use PNG only when you need full lossless quality.</div>
+          </div>
+        </main>
+
+        <aside>
+          <div class="preview" id="previewBox">
+            <div style="font-weight:700">Preview</div>
+            <div id="previewWrap" style="margin-top:10px"><img id="previewImg" src="" alt="" style="display:none"></div>
+            <div class="sizes" id="origSizes" style="display:none">
+              <div>Original: <span id="origSize"></span></div>
+              <div>Compressed: <span id="compSize"></span></div>
+            </div>
+
+            <div id="actions" style="margin-top:10px;display:none">
+              <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+                <a id="downloadLink" class="btn" href="#" download="compressed.jpg"><i class="fa fa-download"></i> Download</a>
+                <button class="btn secondary" id="copyImageBtn"><i class="fa fa-copy"></i> Copy Image</button>
+              </div>
+            </div>
+
+            <div class="spinner" id="spinner"></div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card" style="padding:12px;">
+            <div style="font-weight:700;margin-bottom:6px">Quick Info</div>
+            <div style="font-size:13px;color:rgba(231,251,255,0.8)">All compression happens in your browser — no files are uploaded to servers. Files are not stored anywhere.</div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- SEO Content -->
+      <section class="meta">
+        <h2 style="color:#ffd966">About This Image Compressor</h2>
+        <p>This <strong>Image Compressor</strong> compresses and resizes images entirely in your browser. It supports JPEG, WebP and PNG output, a quality slider for lossy formats, and an optional max-width resize. The tool is fast, private (no uploads), and perfect for optimizing images for websites, social media, or email.</p>
+
+        <h3 style="color:#ffd966;margin-top:12px">How to Use</h3>
+        <ol>
+          <li>Click "Select image" and choose a JPEG/PNG/WebP file from your device.</li>
+          <li>Choose an output format (JPEG or WebP for smaller files; PNG for lossless).</li>
+          <li>Adjust quality (10–100) — lower means smaller file but more compression artifacts.</li>
+          <li>Optionally set a max width in pixels to resize large images.</li>
+          <li>Click "Compress" — preview will appear; then click Download to save the compressed image.</li>
+        </ol>
+
+        <h3 style="color:#ffd966;margin-top:12px">FAQs</h3>
+        <p><strong>Q:</strong> Are my images uploaded to a server?<br><strong>A:</strong> No — compression runs locally in your browser. No upload, no storage.</p>
+        <p><strong>Q:</strong> Which format should I use?<br><strong>A:</strong> WebP gives best size/quality on modern browsers. Use JPEG for wide compatibility. Use PNG only for lossless transparency.</p>
+
+        <h3 style="color:#ffd966;margin-top:12px">SEO Keywords</h3>
+        <p>image compressor online, compress image, reduce image size, jpeg compressor, webp converter, PNG optimizer, image optimizer online</p>
+      </section>
+    </div>
+
+    <footer style="margin-top:18px;text-align:center;color:rgba(231,251,255,0.6)">© 2025 MegaToolsOnline • All tools run in your browser</footer>
+  </div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const previewImg = document.getElementById('previewImg');
+  const previewWrap = document.getElementById('previewWrap');
+  const origSizeEl = document.getElementById('origSize');
+  const compSizeEl = document.getElementById('compSize');
+  const origSizes = document.getElementById('origSizes');
+  const actions = document.getElementById('actions');
+  const downloadLink = document.getElementById('downloadLink');
+  const copyImageBtn = document.getElementById('copyImageBtn');
+  const spinner = document.getElementById('spinner');
+
+  const formatSelect = document.getElementById('formatSelect');
+  const qualityRange = document.getElementById('qualityRange');
+  const qualityLabel = document.getElementById('qualityLabel');
+  const maxWidthInput = document.getElementById('maxWidth');
+
+  let originalBlob = null;
+  let compressedBlob = null;
+  let originalName = 'image';
+
+  qualityRange.addEventListener('input', ()=> qualityLabel.innerText = qualityRange.value + '%');
+
+  fileInput.addEventListener('change', async (e)=>{
+    resetPreview();
+    const file = e.target.files[0];
+    if(!file) return;
+    originalBlob = file;
+    originalName = (file.name || 'image').replace(/\.[^/.]+$/, "");
+    previewImg.src = URL.createObjectURL(file);
+    previewImg.style.display = 'block';
+    origSizeEl.innerText = formatBytes(file.size);
+    origSizes.style.display = 'flex';
+    actions.style.display = 'none';
+    compSizeEl.innerText = '-';
+    compressedBlob = null;
+  });
+
+  document.getElementById('compressBtn').addEventListener('click', async ()=>{
+    if(!originalBlob){ alert('Please select an image first'); return; }
+    spinner.style.display = 'inline-block';
+    await new Promise(r=>setTimeout(r,120)); // small UI pause
+    try{
+      const format = formatSelect.value;
+      const quality = Math.max(0.1, Math.min(1, qualityRange.value/100));
+      const maxW = parseInt(maxWidthInput.value) || null;
+      compressedBlob = await compressImage(originalBlob, format, quality, maxW);
+      compSizeEl.innerText = formatBytes(compressedBlob.size);
+      actions.style.display = 'block';
+      downloadLink.href = URL.createObjectURL(compressedBlob);
+      const ext = format === 'image/png' ? 'png' : (format === 'image/webp' ? 'webp' : 'jpg');
+      downloadLink.download = `${originalName}-compressed.${ext}`;
+      // preview update for compressed image
+      previewImg.src = URL.createObjectURL(compressedBlob);
+    } catch(err){
+      alert('Compression failed: ' + err.message);
+      console.error(err);
+    } finally{
+      spinner.style.display = 'none';
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', resetAll);
+
+  copyImageBtn.addEventListener('click', async ()=>{
+    if(!compressedBlob){ alert('Compress an image first'); return; }
+    try{
+      const item = new ClipboardItem({ [compressedBlob.type]: compressedBlob });
+      await navigator.clipboard.write([item]);
+      copyImageBtn.innerText = 'Copied!';
+      setTimeout(()=> copyImageBtn.innerHTML = '<i class=\"fa fa-copy\"></i> Copy Image', 1200);
+    } catch(e){
+      alert('Copy not supported in this browser.');
+    }
+  });
+
+  function resetPreview(){
+    previewImg.style.display = 'none';
+    previewImg.src = '';
+    origSizes.style.display = 'none';
+    actions.style.display = 'none';
+    compSizeEl.innerText = '-';
+  }
+  function resetAll(){
+    fileInput.value = '';
+    resetPreview();
+    originalBlob = null;
+    compressedBlob = null;
+    maxWidthInput.value = '';
+  }
+
+  // compression function using canvas
+  async function compressImage(blob, outType, quality=0.8, maxWidth=null){
+    return new Promise((resolve, reject)=>{
+      const img = new Image();
+      img.onload = async ()=>{
+        try{
+          // compute target size
+          let width = img.width;
+          let height = img.height;
+          if(maxWidth && width > maxWidth){
+            const ratio = maxWidth / width;
+            width = Math.round(width * ratio);
+            height = Math.round(height * ratio);
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          // fill white background for JPEG to avoid black background on transparent images
+          if(outType === 'image/jpeg'){
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0,0,width,height);
+          }
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // For PNG: toBlob with 'image/png' (quality ignored)
+          // For WebP/JPEG: quality param used
+          canvas.toBlob((b)=>{
+            if(!b) return reject(new Error('Conversion failed'));
+            resolve(b);
+          }, outType, outType === 'image/png' ? undefined : quality);
+        } catch(err){
+          reject(err);
+        }
+      };
+      img.onerror = ()=> reject(new Error('Invalid image file'));
+      // read blob as data URL to avoid CORS tainting if blob is local file
+      const reader = new FileReader();
+      reader.onload = ()=> img.src = reader.result;
+      reader.onerror = ()=> reject(new Error('File read error'));
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  function formatBytes(bytes){
+    if(bytes === 0) return '0 B';
+    const k = 1024;
+    const dm = 2;
+    const sizes = ['B','KB','MB','GB'];
+    const i = Math.floor(Math.log(bytes)/Math.log(k));
+    return parseFloat((bytes/Math.pow(k,i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+</script>
+</body>
+</html>
