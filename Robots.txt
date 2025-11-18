@@ -1,0 +1,39 @@
+# Robots.txt for MegaToolsOnline
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /test/
+Disallow: /old/
+Disallow: /*.bak$
+Disallow: /*.tmp$
+Disallow: /*.zip$
+
+# Allow main tools and pages
+Allow: /index.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /contact.html
+Allow: /age-calculator.html
+Allow: /bmi-calculator.html
+Allow: /percentage-calculator.html
+Allow: /password-generator.html
+Allow: /qr-generator.html
+Allow: /loan-calculator.html
+Allow: /stopwatch.html
+Allow: /timer.html
+Allow: /world-clock.html
+Allow: /unit-converter.html
+Allow: /word-counter.html
+Allow: /image-compressor.html
+Allow: /json-formatter.html
+Allow: /base64.html
+Allow: /url-encoder.html
+Allow: /random.html
+Allow: /pdf-to-jpg.html
+Allow: /case-converter.html
+Allow: /currency-converter.html
+Allow: /minifier.html
+
+# Sitemap location
+Sitemap: https://megatoolsonline.github.io/megatools-site/sitemap.xml
