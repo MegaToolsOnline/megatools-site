@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan EMI Calculator | MegaToolsOnline</title>
+<meta name="description" content="Calculate your Loan EMI easily with our free online Loan EMI Calculator. Get monthly EMI, total interest, and total payment instantly.">
+
+<style>
+:root{
+  --bg1:#0a0f1e; --bg2:#1a2a44;
+  --accent:#00f2fe; --text:#e7fbff;
+}
+body{
+  margin:0; font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color: var(--text);
+  display: flex; justify-content:center; align-items:center; min-height:100vh; padding:20px;
+}
+.container{
+  background: rgba(255,255,255,0.05); border-radius:20px; padding:25px; width:100%; max-width:450px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align:center; animation:slideUp 0.8s ease-out;
+}
+@keyframes slideUp{from{opacity:0; transform:translateY(40px);}to{opacity:1; transform:translateY(0);}}
+h2{color:var(--accent); text-shadow: 0 0 10px var(--accent);}
+input{width:100%; padding:12px; margin:10px 0; border-radius:10px; border:none; outline:none; font-size:16px;}
+button{width:100%; padding:12px; margin-top:10px; border:none; border-radius:10px; background:var(--accent); color:#111; font-weight:bold; cursor:pointer; transition:0.3s;}
+button:hover{transform: scale(1.05); background:#00bcd4;}
+.result-box{margin-top:20px; background:#111; padding:15px; border-radius:12px; display:none; box-shadow:0 0 15px rgba(0,255,255,0.4);}
+.result-box h3{margin:5px 0;}
+.meta{font-size:14px; margin-top:10px; color:rgba(231,251,255,0.8); text-align:left;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Loan EMI Calculator</h2>
+
+  <label>Loan Amount (PKR)</label>
+  <input id="loanAmount" type="number" placeholder="Enter loan amount">
+
+  <label>Annual Interest Rate (%)</label>
+  <input id="interestRate" type="number" placeholder="Enter interest rate">
+
+  <label>Loan Tenure (Months)</label>
+  <input id="loanMonths" type="number" placeholder="Enter loan duration">
+
+  <button onclick="calculateEMI()">Calculate EMI</button>
+
+  <div class="result-box" id="result">
+    <h3>Your Monthly EMI:</h3>
+    <div id="emiValue" style="font-size:24px;"></div>
+
+    <h3>Total Payment:</h3>
+    <div id="totalPayment"></div>
+
+    <h3>Total Interest:</h3>
+    <div id="totalInterest"></div>
+  </div>
+
+  <!-- SEO Content -->
+  <div class="meta">
+    <h2>About This Tool</h2>
+    <p>The Loan EMI Calculator helps you calculate your monthly installment for any loan. Enter loan amount, interest rate, and tenure to get accurate EMI, total interest, and total payment instantly. Perfect for personal, car, home, or business loans.</p>
+
+    <h2>How to Use</h2>
+    <ol>
+      <li>Enter the total loan amount.</li>
+      <li>Enter the annual interest rate (in percentage).</li>
+      <li>Enter the loan tenure in months.</li>
+      <li>Click "Calculate EMI" to see your monthly installment.</li>
+    </ol>
+
+    <h2>FAQs</h2>
+    <p><strong>Q:</strong> Is this tool free?<br>
+       <strong>A:</strong> Yes, it is completely free and works online.</p>
+    <p><strong>Q:</strong> Can I use it for any type of loan?<br>
+       <strong>A:</strong> Yes, it works for personal, car, home, or business loans.</p>
+  </div>
+</div>
+
+<script>
+function calculateEMI() {
+    const P = parseFloat(document.getElementById("loanAmount").value);
+    const R = parseFloat(document.getElementById("interestRate").value)/12/100;
+    const N = parseFloat(document.getElementById("loanMonths").value);
+
+    if(!P || !R || !N){ alert("Please fill all fields correctly."); return; }
+
+    const EMI = (P * R * Math.pow(1+R,N)) / (Math.pow(1+R,N)-1);
+    const totalPayment = EMI * N;
+    const totalInterest = totalPayment - P;
+
+    document.getElementById("emiValue").innerText = "PKR " + EMI.toFixed(2);
+    document.getElementById("totalPayment").innerText = "PKR " + totalPayment.toFixed(2);
+    document.getElementById("totalInterest").innerText = "PKR " + totalInterest.toFixed(2);
+
+    document.getElementById("result").style.display = "block";
+}
+</script>
+
+</body>
+</html>
