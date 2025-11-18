@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - MegaToolsOnline</title>
+<meta name="description" content="Contact MegaToolsOnline for feedback, questions, or support regarding our free online tools, calculators, converters, and generators.">
+<meta name="keywords" content="contact us, MegaToolsOnline contact, online tools support, feedback, free online tools help, web tools support, customer support">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg,#ff7e5f,#feb47b);
+    color:#fff;
+}
+
+.container {
+    max-width:800px;
+    margin:50px auto;
+    background: rgba(0,0,0,0.15);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(30px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.icon {
+    font-size:50px;
+    text-align:center;
+    display:block;
+    margin-bottom:20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,100% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+}
+
+h1,h2 {
+    text-align:center;
+    margin-bottom:20px;
+}
+
+form {
+    display:flex;
+    flex-direction:column;
+}
+
+input, textarea {
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+
+button {
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#00f2fe;
+    color:#000;
+    transition:0.3s;
+}
+
+button:hover {
+    background:#4facfe;
+    color:#fff;
+    transform: scale(1.05);
+}
+
+.result-box{
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background: rgba(0,0,0,0.25);
+    font-size:16px;
+    min-height:60px;
+    white-space: pre-wrap;
+}
+
+a {
+    color:#00f2fe;
+    text-decoration:none;
+}
+a:hover {text-decoration:underline;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <i class="fa-solid fa-envelope icon"></i>
+    <h1>Contact Us</h1>
+    <p style="text-align:center; margin-bottom:25px;">Have any questions, feedback, or suggestions? Reach out to us using the form below!</p>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+        <div class="result-box" id="outputBox"></div>
+    </form>
+</div>
+
+<script>
+// Simple form submission simulation
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if(name && email && message){
+        document.getElementById('outputBox').innerText = `✅ Thank you ${name}! Your message has been received.`;
+        document.getElementById('contactForm').reset();
+    } else {
+        document.getElementById('outputBox').innerText = '❌ Please fill all fields!';
+    }
+});
+</script>
+
+<!-- ⭐ SEO CONTENT -->
+<div style="max-width:800px; margin:40px auto; color:#fff; font-size:15px;">
+<h2>Contact MegaToolsOnline</h2>
+<p>
+MegaToolsOnline provides a variety of free online tools, including calculators, converters, generators, and web utilities.  
+Use this contact page to send your feedback, ask questions, or request new tools. We value user input and aim to improve continuously.
+</p>
+
+<h3>Why Contact Us?</h3>
+<ul>
+<li>Submit feedback to improve our tools</li>
+<li>Request new online tools</li>
+<li>Ask questions regarding any tool functionality</li>
+<li>Report issues or bugs</li>
+<li>Stay connected with MegaToolsOnline updates</li>
+</ul>
+
+<h3>Keywords:</h3>
+<p>contact MegaToolsOnline, online tools support, feedback, free online tool help, web tools support, tool requests, user inquiries</p>
+</div>
+
+</body>
+</html>
