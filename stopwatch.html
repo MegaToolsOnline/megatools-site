@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch Timer | MegaToolsOnline</title>
+<meta name="description" content="Use our free online Stopwatch Timer to track time accurately. Start, stop, and reset with a modern animated interface.">
+
+<style>
+:root{
+  --bg1:#0a0f1e; --bg2:#1a2a44;
+  --accent:#00f2fe; --text:#e7fbff;
+}
+body{
+  margin:0; font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color: var(--text);
+  display: flex; justify-content:center; align-items:center; min-height:100vh; padding:20px;
+}
+.container{
+  background: rgba(255,255,255,0.05); border-radius:20px; padding:25px; width:100%; max-width:400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); text-align:center; animation:slideUp 0.8s ease-out;
+}
+@keyframes slideUp{from{opacity:0; transform:translateY(40px);}to{opacity:1; transform:translateY(0);}}
+h2{color:var(--accent); text-shadow: 0 0 10px var(--accent);}
+.timer{font-size:48px; margin:20px 0; letter-spacing:2px;}
+button{padding:12px 20px; margin:5px; border:none; border-radius:10px; background:var(--accent); color:#111; font-weight:bold; cursor:pointer; transition:0.3s;}
+button:hover{transform: scale(1.05); background:#00bcd4;}
+.meta{font-size:14px; margin-top:20px; color:rgba(231,251,255,0.8); text-align:left;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Stopwatch Timer</h2>
+  <div class="timer" id="display">00:00:00</div>
+  
+  <button onclick="startTimer()">Start</button>
+  <button onclick="stopTimer()">Stop</button>
+  <button onclick="resetTimer()">Reset</button>
+
+  <!-- SEO Content -->
+  <div class="meta">
+    <h2>About This Tool</h2>
+    <p>The Stopwatch Timer tool allows you to track time accurately for workouts, cooking, games, or any activity. Start, stop, and reset easily with a modern, animated interface. Free and online tool accessible on any device.</p>
+
+    <h2>How to Use</h2>
+    <ol>
+      <li>Click "Start" to begin the stopwatch.</li>
+      <li>Click "Stop" to pause the timer.</li>
+      <li>Click "Reset" to set the timer back to 00:00:00.</li>
+    </ol>
+
+    <h2>FAQs</h2>
+    <p><strong>Q:</strong> Is this Stopwatch free?<br>
+       <strong>A:</strong> Yes, it is completely free to use online.</p>
+    <p><strong>Q:</strong> Can I use it on mobile?<br>
+       <strong>A:</strong> Yes, it is fully responsive and works on mobile devices.</p>
+  </div>
+</div>
+
+<script>
+let hours=0, minutes=0, seconds=0, timer=null;
+
+function updateDisplay(){
+  const h = hours.toString().padStart(2,'0');
+  const m = minutes.toString().padStart(2,'0');
+  const s = seconds.toString().padStart(2,'0');
+  document.getElementById('display').innerText = `${h}:${m}:${s}`;
+}
+
+function startTimer(){
+  if(timer) return;
+  timer = setInterval(() => {
+    seconds++;
+    if(seconds>=60){ seconds=0; minutes++; }
+    if(minutes>=60){ minutes=0; hours++; }
+    updateDisplay();
+  },1000);
+}
+
+function stopTimer(){
+  clearInterval(timer);
+  timer=null;
+}
+
+function resetTimer(){
+  clearInterval(timer);
+  timer=null;
+  hours=0; minutes=0; seconds=0;
+  updateDisplay();
+}
+</script>
+</body>
+</html>
