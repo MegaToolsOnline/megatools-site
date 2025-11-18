@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QR Code Generator | MegaToolsOnline</title>
+<meta name="description" content="Generate QR codes for URLs and text. Download PNG or copy image. Fast and private." />
+
+<!-- QRious library (small client-side QR generator) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+:root{
+  --bg1:#071228; --bg2:#0b2740;
+  --accent1:#00f2fe; --accent2:#4facfe;
+  --card: rgba(255,255,255,0.04);
+  --text: #e7fbff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:28px;
+}
+.wrap{max-width:980px;margin:0 auto}
+
+/* Card */
+.card{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Header */
+.header{display:flex;gap:12px;align-items:center}
+.logo{
+  width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));
+  display:flex;align-items:center;justify-content:center;color:#04161a;font-size:24px;box-shadow:0 8px 22px rgba(0,0,0,0.45)
+}
+.header h1{margin:0;font-size:20px}
+
+/* Layout */
+.grid{display:grid;grid-template-columns:360px 1fr;gap:18px;margin-top:16px}
+@media(max-width:900px){ .grid{grid-template-columns:1fr} }
+
+/* Left preview */
+.preview{
+  display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;border-radius:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+}
+#qr-canvas{background:white;border-radius:8px;padding:6px;box-shadow:0 12px 30px rgba(0,0,0,0.5);}
+
+/* Buttons */
+.btn{
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#04161a;border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;
+  display:inline-flex;gap:8px;align-items:center;
+}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+
+/* Controls */
+.controls{display:flex;flex-direction:column;gap:12px;padding:6px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.input, select, textarea{
+  padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);
+  width:100%;
+}
+.small{width:120px}
+
+/* animation reveal */
+.reveal {opacity:0; transform: translateY(10px) scale(.98); transition:all .45s}
+.reveal.show {opacity:1; transform:none}
+
+/* meta */
+.meta{font-size:13px;color:rgba(231,251,255,0.8);margin-top:8px}
+
+/* footer */
+.footer{margin-top:16px;text-align:center;color:rgba(231,251,255,0.7);font-size:13px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <div class="logo"><i class="fa fa-qrcode"></i></div>
+        <div>
+          <h1>QR Code Generator</h1>
+          <div class="meta">Create QR codes for URLs, text or any data. Private & client-side.</div>
+        </div>
+      </div>
+
+      <div class="grid" aria-live="polite">
+        <!-- LEFT: preview -->
+        <div class="preview">
+          <canvas id="qr-canvas" width="300" height="300" aria-label="QR code preview"></canvas>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+            <button id="downloadBtn" class="btn"><i class="fa fa-download"></i> Download PNG</button>
+            <button id="copyBtn" class="btn secondary"><i class="fa fa-copy"></i> Copy Image</button>
+          </div>
+
+          <div id="revealMsg" class="meta reveal">Generated — ready to use</div>
+        </div>
+
+        <!-- RIGHT: controls -->
+        <div>
+          <div class="controls">
+            <label>
+              <div style="font-weight:700;margin-bottom:6px">Text / URL</div>
+              <textarea id="text" class="input" rows="4" placeholder="Enter URL or text to encode (e.g. https://example.com)"></textarea>
+            </label>
+
+            <div class="row">
+              <label style="flex:1">
+                <div style="font-weight:700;margin-bottom:6px">Size (px)</div>
+                <input id="size" class="input small" type="number" min="100" max="1000" value="300">
+              </label>
+
+              <label style="width:220px">
+                <div style="font-weight:700;margin-bottom:6px">Correction level</div>
+                <select id="ecLevel" class="input small">
+                  <option value="L">L — Low (7%)</option>
+                  <option value="M" selected>M — Medium (15%)</option>
+                  <option value="Q">Q — Quartile (25%)</option>
+                  <option value="H">H — High (30%)</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="row" style="align-items:center">
+              <label style="display:flex;gap:8px;align-items:center"><input id="hasBg" type="checkbox">Light background (white)</label>
+              <label style="display:flex;gap:8px;align-items:center"><input id="addLogo" type="checkbox">Embed small center logo</label>
+            </div>
+
+            <div style="display:flex;gap:10px">
+              <button id="generate" class="btn"><i class="fa fa-magic"></i> Generate</button>
+              <button id="clear" class="btn secondary"><i class="fa fa-eraser"></i> Clear</button>
+            </div>
+
+            <div class="meta">Tip: paste a URL and press Generate. Use download to save PNG.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">© 2025 MegaToolsOnline • All tools run in your browser</div>
+  </div>
+
+<script>
+  // init QRious
+  const canvas = document.getElementById('qr-canvas');
+  const qr = new QRious({ element: canvas, size: 300, value: '' });
+
+  const textEl = document.getElementById('text');
+  const sizeEl = document.getElementById('size');
+  const ecEl = document.getElementById('ecLevel');
+  const generateBtn = document.getElementById('generate');
+  const clearBtn = document.getElementById('clear');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const reveal = document.getElementById('revealMsg');
+  const hasBg = document.getElementById('hasBg');
+  const addLogo = document.getElementById('addLogo');
+
+  function updateQR(options = {}) {
+    const size = parseInt(sizeEl.value) || 300;
+    const value = (textEl.value || '').trim();
+    const level = ecEl.value || 'M';
+    qr.size = size;
+    qr.level = level;
+    qr.value = value || ' ';
+    // background color
+    qr.background = hasBg.checked ? '#ffffff' : '#ffffff'; // canvas will be white but CSS shows dark bg
+    // Draw logo optional by drawing onto canvas after QR drawn
+    if (addLogo.checked) {
+      // draw after tiny delay
+      setTimeout(() => embedLogo());
+    }
+  }
+
+  function embedLogo(){
+    try {
+      const ctx = canvas.getContext('2d');
+      // simplest: draw a small circle in center to mimic logo
+      const s = Math.floor(canvas.width * 0.18);
+      const x = (canvas.width - s)/2;
+      const y = (canvas.height - s)/2;
+      ctx.save();
+      // white rounded background
+      ctx.fillStyle = '#ffffff';
+      roundRect(ctx, x, y, s, s, 10);
+      ctx.fill();
+      // small icon (simple square using accent color)
+      ctx.fillStyle = '#00f2fe';
+      ctx.fillRect(x + s*0.18, y + s*0.18, s*0.64, s*0.64);
+      ctx.restore();
+    } catch(e){}
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  async function animateGenerate() {
+    // small visual animation: flash and reveal
+    reveal.classList.remove('show');
+    // tiny scale animation
+    canvas.style.transform = 'scale(0.98) translateY(6px)';
+    await new Promise(r => setTimeout(r, 140));
+    canvas.style.transform = '';
+    reveal.classList.add('show');
+  }
+
+  generateBtn.addEventListener('click', async ()=>{
+    updateQR();
+    await animateGenerate();
+  });
+
+  clearBtn.addEventListener('click', ()=>{
+    textEl.value = '';
+    updateQR();
+    reveal.classList.remove('show');
+  });
+
+  // download PNG
+  downloadBtn.addEventListener('click', ()=>{
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = 'qrcode.png';
+    a.click();
+  });
+
+  // copy image to clipboard (modern browsers)
+  copyBtn.addEventListener('click', async ()=>{
+    try {
+      canvas.toBlob(async blob => {
+        try {
+          await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+          copyBtn.innerHTML = '<i class="fa fa-check"></i> Copied';
+          setTimeout(()=> copyBtn.innerHTML = '<i class="fa fa-copy"></i> Copy Image', 1200);
+        } catch (err) {
+          // fallback: copy data URL to clipboard text
+          const dataUrl = canvas.toDataURL('image/png');
+          await navigator.clipboard.writeText(dataUrl);
+          copyBtn.innerHTML = '<i class="fa fa-check"></i> URL copied';
+          setTimeout(()=> copyBtn.innerHTML = '<i class="fa fa-copy"></i> Copy Image', 1200);
+        }
+      }, 'image/png');
+    } catch(e){
+      alert('Copy to clipboard not supported in your browser.');
+    }
+  });
+
+  // update QR when pressing Enter in textarea
+  textEl.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      generateBtn.click();
+    }
+  });
+
+  // auto-update size change
+  sizeEl.addEventListener('change', ()=> updateQR());
+
+  // initial blank QR
+  updateQR();
+</script>
+</body>
+</html>
