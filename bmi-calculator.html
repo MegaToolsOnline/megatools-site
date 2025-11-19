@@ -1,107 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BMI Calculator | MegaToolsOnline</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-    body {
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        font-family: Arial, sans-serif;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-    .container {
-        background: rgba(255,255,255,0.1);
-        padding: 30px;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        width: 350px;
-        text-align: center;
-        box-shadow: 0 0 25px rgba(255,255,255,0.2);
-        animation: fadeIn 1s ease;
-    }
-    @keyframes fadeIn {
-        from {opacity: 0; transform: scale(0.9);}
-        to {opacity: 1; transform: scale(1);}
-    }
-    h1 {
-        font-size: 26px;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    input {
-        width: 90%;
-        padding: 12px;
-        border-radius: 8px;
-        border: none;
-        margin: 10px 0;
-    }
-    button {
-        padding: 12px 20px;
-        background: #00e6ac;
-        border: none;
-        border-radius: 8px;
-        color: black;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: 0.3s;
-    }
-    button:hover {
-        background: #00b386;
-    }
-    .result {
-        margin-top: 15px;
-        font-size: 18px;
-    }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Checker for Height & Weight – Instant Body Mass Index Result</title>
+  <meta name="description" content="Free BMI Checker for height and weight. Get instant Body Mass Index results with health category, ideal weight range, and detailed breakdown. Fast and accurate BMI tool." />
+  <style>
+    body {font-family: Arial, sans-serif; background:#f7f7f7; margin:0; padding:20px;}
+    .container {max-width:650px; margin:auto; background:#fff; padding:25px; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.1);}    
+    h1 {text-align:center; font-size:26px; margin-bottom:20px;}
+    label {font-weight:bold;}
+    input {width:100%; padding:10px; margin-top:5px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px;}
+    button {width:100%; padding:12px; background:#28a745; border:none; border-radius:8px; color:#fff; font-size:16px; cursor:pointer;}
+    button:hover {background:#1f8f39;}
+    .result {margin-top:20px; padding:20px; background:#eefdf2; border-radius:10px; font-size:18px;}
+    .category {font-size:20px; font-weight:bold;}
+  </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1><i class="fa-solid fa-heart-pulse"></i> BMI Calculator</h1>
+  <div class="container">
+    <h1>BMI Checker for Height & Weight</h1>
 
-    <input type="number" id="weight" placeholder="Enter weight (kg)">
-    <input type="number" id="height" placeholder="Enter height (cm)">
-    
+    <label>Enter Your Weight (kg)</label>
+    <input type="number" id="weight" placeholder="Example: 70" />
+
+    <label>Enter Your Height (cm)</label>
+    <input type="number" id="height" placeholder="Example: 170" />
+
     <button onclick="calculateBMI()">Calculate BMI</button>
 
-    <div class="result" id="result"></div>
-</div>
+    <div id="result" class="result" style="display:none;"></div>
+  </div>
 
-<script>
-function calculateBMI() {
-    let weight = document.getElementById("weight").value;
-    let height = document.getElementById("height").value;
+  <script>
+    function calculateBMI() {
+      let weight = parseFloat(document.getElementById("weight").value);
+      let height = parseFloat(document.getElementById("height").value) / 100;
 
-    if (!weight || !height) {
-        document.getElementById("result").innerHTML = "Please enter weight and height.";
-        return;
+      if (!weight || !height) return;
+
+      let bmi = (weight / (height * height)).toFixed(1);
+      let category = "";
+
+      if (bmi < 18.5) category = "Underweight";
+      else if (bmi < 24.9) category = "Normal Weight";
+      else if (bmi < 29.9) category = "Overweight";
+      else category = "Obese";
+
+      let idealMin = (18.5 * height * height).toFixed(1);
+      let idealMax = (24.9 * height * height).toFixed(1);
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        <div class="category">Your BMI: ${bmi}</div>
+        <b>Health Category:</b> ${category}<br><br>
+        <b>Ideal Weight Range:</b> ${idealMin} kg – ${idealMax} kg
+      `;
     }
+  </script>
 
-    height = height / 100; // convert cm to meters
-    let bmi = (weight / (height * height)).toFixed(1);
+  <div class="container" style="margin-top:30px;">
+    <h2>About This BMI Checker Tool</h2>
+    <p>
+      This BMI Checker Tool calculates your Body Mass Index instantly based on your height and weight. It also shows your exact health category along with your ideal weight range.
+    </p>
 
-    let status = "";
-    if (bmi < 18.5) status = "Underweight";
-    else if (bmi < 24.9) status = "Normal Weight";
-    else if (bmi < 29.9) status = "Overweight";
-    else status = "Obese";
+    <h3>Why This BMI Calculator Is Better?</h3>
+    <ul>
+      <li>Instant BMI calculation</li>
+      <li>Shows health category (Underweight, Normal, Overweight)</li>
+      <li>Ideal weight range for your height</li>
+      <li>Clean, fast, mobile-friendly design</li>
+    </ul>
 
-    document.getElementById("result").innerHTML =
-        `<b>Your BMI:</b> ${bmi}<br><b>Status:</b> ${status}`;
-}
-</script>
+    <h3>Who Should Use This BMI Checker?</h3>
+    <p>
+      Anyone who wants to understand their weight status—students, fitness lovers, gym members, doctors, parents, and regular users.
+    </p>
+
+    <h3>Frequently Asked Questions</h3>
+    <p><b>1. What is BMI?</b><br>BMI stands for Body Mass Index, a number based on height and weight.</p>
+    <p><b>2. What BMI is considered normal?</b><br>A BMI between 18.5 and 24.9 is considered healthy.</p>
+    <p><b>3. Is this BMI tool accurate?</b><br>Yes, it uses the official WHO BMI formula.</p>
+  </div>
 
 </body>
 </html>
