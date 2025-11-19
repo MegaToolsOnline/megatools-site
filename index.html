@@ -1,109 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>MegaToolsOnline — 20 Free Tools</title>
-<meta name="description" content="MegaToolsOnline — 20 free calculators, converters, and utilities. Fast, modern and free." />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MegaToolsOnline – Free Online Tools & Calculators (High Search, Zero Competition)</title>
+
+<meta name="description" content="MegaToolsOnline: Free online calculators, converters, timers, and utilities. Zero-competition, high-search tools including Age Calculator, BMI Calculator, Time Zone Overlap Finder, Percentage Calculator, Password Generator, and more. Access fast tools for productivity, finance, health, and daily tasks globally.">
+<meta name="keywords" content="free online tools, age calculator online, bmi calculator free, timezone meeting overlap, percentage calculator online, password generator tool, qr code generator free, loan emi calculator, stopwatch timer, unit converter online, word counter online, image compressor tool, json formatter online, base64 encoder decoder, url encoder decoder, random number generator, pdf to jpg converter, text case converter, currency converter online, html css minifier, zero competition online tools">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-  :root{
-    --bg1:#071228;
-    --bg2:#0b2740;
-    --accent1:#00f2fe;
-    --accent2:#4facfe;
-    --card-bg: rgba(255,255,255,0.04);
-    --glass: rgba(255,255,255,0.03);
-    --text: #e7fbff;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    min-height:100vh;
-    font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
-    color:var(--text);
-    background:
-      radial-gradient(800px 400px at 10% 10%, rgba(79,172,254,0.06), transparent 10%),
-      radial-gradient(700px 350px at 85% 85%, rgba(0,242,254,0.04), transparent 12%),
-      linear-gradient(180deg,var(--bg1),var(--bg2));
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-
-  .wrap{max-width:1200px;margin:28px auto;padding:18px}
-
-  /* Header */
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .logo {
-    width:62px;height:62px;border-radius:14px;
-    background:linear-gradient(135deg,var(--accent2),var(--accent1));
-    display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(255,255,255,0.06);
-    transform: translateZ(20px);
-  }
-  .brand h1{margin:0;font-size:20px}
-  nav a{
-    color:var(--text);text-decoration:none;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);margin-left:8px;
-    transition:all .18s;
-  }
-  nav a:hover{transform:translateY(-4px);background:rgba(255,255,255,0.03);}
-
-  /* Hero */
-  .hero{
-    display:flex;gap:20px;align-items:center;margin-top:22px;padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  }
-  .hero-left{flex:1}
-  .hero h2{margin:0;font-size:28px;line-height:1.05}
-  .hero p{color:rgba(231,251,255,0.85);margin-top:8px}
-  .cta{margin-top:14px}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04161a;font-weight:700;cursor:pointer;
-    box-shadow:0 10px 30px rgba(79,172,254,0.12);text-decoration:none;
-  }
-
-  .hero-visual{width:260px;display:flex;justify-content:center;align-items:center}
-  .device{
-    width:260px;height:160px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    display:flex;justify-content:center;align-items:center;box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    transform: perspective(800px) rotateX(8deg) rotateY(-8deg);
-    transition: transform .6s;
-  }
-  .device:hover{transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateZ(8px) scale(1.02)}
-
-  /* Tools grid */
-  .grid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-  .card{
-    background:var(--card-bg);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);
-    display:flex;align-items:center;gap:14px;transition: transform .28s, box-shadow .28s;
-    transform-style:preserve-3d;
-  }
-  .card:hover{transform: translateY(-12px) rotateX(3deg);box-shadow: 0 30px 60px rgba(0,0,0,0.7)}
-  .icon{
-    width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
-    display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  }
-  .meta{flex:1}
-  .meta h3{margin:0;font-size:16px}
-  .meta p{margin:6px 0 0;color:rgba(230,247,255,0.8);font-size:13px}
-  .open-btn{margin-left:auto;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);text-decoration:none;transition:all .18s}
-  .open-btn:hover{transform:translateY(-6px);background:rgba(255,255,255,0.03)}
-
-  footer{margin-top:28px;text-align:center;color:rgba(231,251,255,0.75);padding:18px}
-
-  /* 3D subtle parallax */
-  .card, .device{will-change:transform}
-  .card[data-tilt] { transform-origin: center; }
-
-  @media (max-width:900px){
-    .hero{flex-direction:column;text-align:center}
-    .hero-visual{order:-1}
-  }
+:root{
+  --bg1:#071228;
+  --bg2:#0b2740;
+  --accent1:#00f2fe;
+  --accent2:#4facfe;
+  --card-bg: rgba(255,255,255,0.04);
+  --text: #e7fbff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(79,172,254,0.06), transparent 10%),
+    radial-gradient(700px 350px at 85% 85%, rgba(0,242,254,0.04), transparent 12%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+}
+a { text-decoration: none; color: inherit; }
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo {width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;}
+.hero{display:flex;gap:20px;align-items:center;margin-top:22px;padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);box-shadow: 0 20px 60px rgba(0,0,0,0.6);flex-wrap: wrap;}
+.hero-left{flex:1}
+.hero h1, .hero h2{margin:0}
+.hero p{color:rgba(231,251,255,0.85);margin-top:8px;font-size:1.2rem}
+.cta{margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04161a;font-weight:700;cursor:pointer;}
+.hero-visual{width:260px;display:flex;justify-content:center;align-items:center;margin-top:20px;}
+.device{width:260px;height:160px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;justify-content:center;align-items:center;box-shadow: 0 30px 80px rgba(0,0,0,0.6);transform: perspective(800px) rotateX(8deg) rotateY(-8deg);transition: transform .6s;}
+main#tools .grid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--card-bg);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:14px;transition: transform .28s, box-shadow .28s;transform-style:preserve-3d;}
+.card:hover{transform: translateY(-12px) rotateX(3deg);box-shadow: 0 30px 60px rgba(0,0,0,0.7);}
+.icon{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+.meta h3{margin:0;font-size:16px}
+.meta p{margin:6px 0 0;color:rgba(230,247,255,0.8);font-size:13px}
+.open-btn{margin-left:auto;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);text-decoration:none;transition:all .18s}
+.open-btn:hover{transform:translateY(-6px);background:rgba(255,255,255,0.03);}
+footer{margin-top:28px;text-align:center;color:rgba(231,251,255,0.75);padding:18px}
+@media (max-width:900px){.hero{flex-direction:column;text-align:center}.hero-visual{order:-1}}
 </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -114,7 +65,6 @@
           <div style="font-size:12px;color:rgba(231,251,255,0.8)">Fast tools • Calculators • Converters</div>
         </div>
       </div>
-
       <nav>
         <a href="about.html">About</a>
         <a href="privacy.html">Privacy</a>
@@ -124,8 +74,8 @@
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
-        <h2 id="hero-title">20 Free Online Tools — Modern & Fast</h2>
-        <p>Useful calculators, converters and utilities. Click any tool to open and use it instantly — fully client-side and privacy friendly.</p>
+        <h1 id="hero-title">MegaToolsOnline – Free High-Search Online Tools & Calculators</h1>
+        <p>Access the fastest, most accurate calculators, converters, timers, and utilities globally. Zero-competition tools for Age, BMI, Time Zones, Finance, Health, and more.</p>
         <div class="cta"><a class="btn" href="#tools">Explore Tools <i class="fa fa-arrow-right"></i></a></div>
       </div>
 
@@ -142,225 +92,182 @@
     <main id="tools">
       <div class="grid">
 
-        <!-- 1 Age Calculator (correct name + calculator icon) -->
+        <!-- Tool 1 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-calculator"></i></div>
           <div class="meta">
             <h3>Age Calculator</h3>
-            <p>Calculate age in years, months and days.</p>
+            <p>Calculate age in years, months, and days easily.</p>
           </div>
           <a class="open-btn" href="age-calculator.html">Open</a>
         </div>
 
-        <!-- 2 BMI -->
+        <!-- Tool 2 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-heartbeat"></i></div>
           <div class="meta">
             <h3>BMI Calculator</h3>
-            <p>Body Mass Index check.</p>
+            <p>Check Body Mass Index with modern interface.</p>
           </div>
           <a class="open-btn" href="bmi-calculator.html">Open</a>
         </div>
 
-        <!-- 3 Percentage -->
+        <!-- Tool 3 -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-globe"></i></div>
+          <div class="meta">
+            <h3>Time Zone Meeting Overlap Finder</h3>
+            <p>Find best meeting time across global time zones.</p>
+          </div>
+          <a class="open-btn" href="timezone-overlap.html">Open</a>
+        </div>
+
+        <!-- Tool 4 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-percent"></i></div>
           <div class="meta">
             <h3>Percentage Calculator</h3>
-            <p>Percent, change & difference.</p>
+            <p>Calculate percentage, change, and difference.</p>
           </div>
           <a class="open-btn" href="percentage-calculator.html">Open</a>
         </div>
 
-        <!-- 4 Password -->
+        <!-- Tool 5 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-key"></i></div>
           <div class="meta">
             <h3>Password Generator</h3>
-            <p>Create strong random passwords.</p>
+            <p>Generate secure random passwords instantly.</p>
           </div>
           <a class="open-btn" href="password-generator.html">Open</a>
         </div>
 
-        <!-- 5 QR -->
+        <!-- Tool 6 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-qrcode"></i></div>
           <div class="meta">
             <h3>QR Code Generator</h3>
-            <p>Generate QR codes for URLs & text.</p>
+            <p>Create QR codes for URLs or text quickly.</p>
           </div>
           <a class="open-btn" href="qr-generator.html">Open</a>
         </div>
 
-        <!-- 6 Loan -->
+        <!-- Tool 7 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-money-bill"></i></div>
           <div class="meta">
             <h3>Loan / EMI Calculator</h3>
-            <p>Monthly EMI & schedule.</p>
+            <p>Compute monthly EMI & payment schedule fast.</p>
           </div>
           <a class="open-btn" href="loan-calculator.html">Open</a>
         </div>
 
-        <!-- 7 Stopwatch -->
+        <!-- Tool 8 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-stopwatch"></i></div>
           <div class="meta">
             <h3>Stopwatch</h3>
-            <p>Simple stopwatch with laps.</p>
+            <p>Track time with laps for workouts or tasks.</p>
           </div>
           <a class="open-btn" href="stopwatch.html">Open</a>
         </div>
 
-        <!-- 8 Timer -->
+        <!-- Tool 9 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-hourglass-half"></i></div>
           <div class="meta">
             <h3>Countdown Timer</h3>
-            <p>Custom timer with alarm.</p>
+            <p>Set custom timers with alerts quickly.</p>
           </div>
           <a class="open-btn" href="timer.html">Open</a>
         </div>
 
-        <!-- 9 World Clock -->
-        <div class="card" data-tilt>
-          <div class="icon"><i class="fa fa-globe"></i></div>
-          <div class="meta">
-            <h3>World Clock</h3>
-            <p>World time & timezone converter.</p>
-          </div>
-          <a class="open-btn" href="world-clock.html">Open</a>
-        </div>
-
-        <!-- 10 Unit Converter -->
+        <!-- Tool 10 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-balance-scale"></i></div>
           <div class="meta">
             <h3>Unit Converter</h3>
-            <p>Length, weight, volume and more.</p>
+            <p>Convert length, weight, volume, and more.</p>
           </div>
           <a class="open-btn" href="unit-converter.html">Open</a>
         </div>
 
-        <!-- 11 Word Counter -->
+        <!-- Tool 11 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-file-word"></i></div>
           <div class="meta">
             <h3>Word Counter</h3>
-            <p>Count words, chars & reading time.</p>
+            <p>Count words, characters & estimated reading time.</p>
           </div>
           <a class="open-btn" href="word-counter.html">Open</a>
         </div>
 
-        <!-- 12 Image Compressor -->
+        <!-- Tool 12 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-image"></i></div>
           <div class="meta">
             <h3>Image Compressor</h3>
-            <p>Compress images for web.</p>
+            <p>Compress images for web usage fast and easy.</p>
           </div>
           <a class="open-btn" href="image-compressor.html">Open</a>
         </div>
 
-        <!-- 13 JSON Formatter -->
+        <!-- Tool 13 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-code"></i></div>
           <div class="meta">
             <h3>JSON Formatter</h3>
-            <p>Format, validate & minify JSON.</p>
+            <p>Format, validate, and minify JSON quickly.</p>
           </div>
           <a class="open-btn" href="json-formatter.html">Open</a>
         </div>
 
-        <!-- 14 Base64 -->
+        <!-- Tool 14 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-database"></i></div>
           <div class="meta">
             <h3>Base64 Encode / Decode</h3>
-            <p>Encode or decode Base64 strings.</p>
+            <p>Encode or decode Base64 strings efficiently.</p>
           </div>
           <a class="open-btn" href="base64.html">Open</a>
         </div>
 
-        <!-- 15 URL Encoder -->
+        <!-- Tool 15 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-link"></i></div>
           <div class="meta">
             <h3>URL Encoder / Decoder</h3>
-            <p>Encode or decode URL parts.</p>
+            <p>Encode or decode URL components safely.</p>
           </div>
           <a class="open-btn" href="url-encoder.html">Open</a>
         </div>
 
-        <!-- 16 Random -->
+        <!-- Tool 16 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-random"></i></div>
           <div class="meta">
             <h3>Random Number Generator</h3>
-            <p>Generate secure random numbers.</p>
+            <p>Generate secure random numbers instantly.</p>
           </div>
           <a class="open-btn" href="random.html">Open</a>
         </div>
 
-        <!-- 17 PDF to JPG -->
+        <!-- Tool 17 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-file-pdf"></i></div>
           <div class="meta">
-            <h3>PDF to JPG</h3>
-            <p>Convert PDF pages into images.</p>
+            <h3>PDF to JPG Converter</h3>
+            <p>Convert PDF pages into high-quality images.</p>
           </div>
           <a class="open-btn" href="pdf-to-jpg.html">Open</a>
         </div>
 
-        <!-- 18 Case Converter -->
+        <!-- Tool 18 -->
         <div class="card" data-tilt>
           <div class="icon"><i class="fa fa-font"></i></div>
           <div class="meta">
             <h3>Text Case Converter</h3>
-            <p>Uppercase, lowercase & title case.</p>
+            <p>Convert text to uppercase, lowercase, or title case.</p>
           </div>
           <a class="open-btn" href="case-converter.html">Open</a>
         </div>
-
-        <!-- 19 Currency -->
-        <div class="card" data-tilt>
-          <div class="icon"><i class="fa fa-exchange-alt"></i></div>
-          <div class="meta">
-            <h3>Currency Converter</h3>
-            <p>Convert currencies (add live rates later).</p>
-          </div>
-          <a class="open-btn" href="currency-converter.html">Open</a>
-        </div>
-
-        <!-- 20 Minifier -->
-        <div class="card" data-tilt>
-          <div class="icon"><i class="fa fa-compress"></i></div>
-          <div class="meta">
-            <h3>HTML / CSS Minifier</h3>
-            <p>Minify front-end code for faster load.</p>
-          </div>
-          <a class="open-btn" href="minifier.html">Open</a>
-        </div>
-
-      </div> <!-- grid -->
-    </main>
-
-    <footer>
-      © 2025 MegaToolsOnline — <a href="privacy.html" style="color:rgba(231,251,255,0.9)">Privacy</a> • <a href="contact.html" style="color:rgba(231,251,255,0.9)">Contact</a>
-    </footer>
-  </div>
-
-  <script>
-    // tiny tilt / parallax for cards & device
-    document.querySelectorAll('[data-tilt], .device').forEach(el=>{
-      el.addEventListener('mousemove', (e)=>{
-        const rect = el.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `translateY(-8px) rotateX(${(-y*6)}deg) rotateY(${(x*8)}deg)`;
-      });
-      el.addEventListener('mouseleave', ()=> el.style.transform = '');
-    });
-  </script>
-</body>
-</html>
