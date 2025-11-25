@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://megatoolsonline.github.io/megatools-site/sitemap.xml
