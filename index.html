@@ -1,276 +1,528 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MegaToolsOnline — Free Online Tools & Calculators | Fast · No Login · Mobile</title>
-  <meta name="description" content="MegaToolsOnline: Free online tools and calculators — Age, BMI, Timezone overlap, Sleep cycle, Water intake, Tip split, Pregnancy due date, Calorie burn, Pet age, TikTok hashtags and more. Fast, mobile-friendly and no signup." />
-  <meta name="keywords" content="free online tools, age calculator, bmi calculator, timezone meeting overlap, sleep cycle calculator, water intake calculator, tip split calculator, pregnancy due date, calorie burn steps, pet age calculator, tiktok hashtag tool, baby growth percentile, loan payoff calculator, productivity timer, heart rate zone calculator" />
-  <link rel="icon" href="favicon.ico" />
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <style>
-    :root{
-      --bg:#071228; --card:#072a3a; --accent1:#00f2fe; --accent2:#4facfe; --muted:rgba(231,251,255,0.8);
-      --glass: rgba(255,255,255,0.03);
-      --radius:12px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#0b2740);color:var(--muted);-webkit-font-smoothing:antialiased;padding:20px}
-    .wrap{max-width:1200px;margin:0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;font-weight:800;color:#04161a}
-    h1{margin:0;font-size:1.6rem;color:#e7fbff}
-    nav a{color:var(--muted);margin-left:10px;text-decoration:none;padding:8px;border-radius:8px}
-    .hero{display:flex;gap:20px;align-items:center;padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 60px rgba(0,0,0,0.6)}
-    .hero-left{flex:1}
-    .hero h2{margin:0 0 8px 0;color:#f2fbff}
-    .hero p{margin:0;color:rgba(231,251,255,0.8)}
-    .hero img{width:320px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6);object-fit:cover}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0}
-    .card{background:var(--card);padding:16px;border-radius:var(--radius);display:flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .22s, box-shadow .22s}
-    .card:hover{transform:translateY(-8px) rotateX(2deg);box-shadow:0 30px 60px rgba(0,0,0,0.7)}
-    .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#04161a;font-weight:700;font-size:20px}
-    .meta h3{margin:0;font-size:16px;color:#e9fbff}
-    .meta p{margin:6px 0 0;color:rgba(231,251,255,0.75);font-size:13px}
-    .open{margin-left:auto;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);text-decoration:none}
-    .open:hover{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04161a}
-    /* SEO content block */
-    .seo{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));padding:22px;border-radius:12px;margin-top:18px;color:rgba(231,251,255,0.9);line-height:1.65}
-    .seo h2{color:#e7fbff}
-    .seo img{max-width:100%;border-radius:10px;margin:12px 0}
-    .faq{margin-top:14px;background:rgba(0,0,0,0.06);padding:12px;border-radius:8px}
-    footer{margin-top:22px;text-align:center;color:rgba(231,251,255,0.6)}
-    @media(max-width:900px){.hero{flex-direction:column}.hero img{width:100%}}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MegaToolsOnline — 20 Free Tools</title>
+<meta name="description" content="MegaToolsOnline — 20 free calculators, converters, and utilities. Fast, modern and free." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <!-- Organization structured data for brand recognition -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"MegaToolsOnline",
-    "url":"https://megatoolsonline.github.io/megatools-site/",
-    "logo":"https://megatoolsonline.github.io/megatools-site/logo.png",
-    "sameAs":[
-      "https://twitter.com/yourprofile",
-      "https://www.facebook.com/yourprofile"
-    ]
+<style>
+  :root{
+    --bg1:#071228;
+    --bg2:#0b2740;
+    --accent1:#00f2fe;
+    --accent2:#4facfe;
+    --card-bg: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.03);
+    --text: #e7fbff;
   }
-  </script>
-</head>
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(800px 400px at 10% 10%, rgba(79,172,254,0.06), transparent 10%),
+      radial-gradient(700px 350px at 85% 85%, rgba(0,242,254,0.04), transparent 12%),
+      linear-gradient(180deg,var(--bg1),var(--bg2));
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
 
+  .wrap{max-width:1200px;margin:28px auto;padding:18px}
+
+  /* Header */
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo {
+    width:62px;height:62px;border-radius:14px;
+    background:linear-gradient(135deg,var(--accent2),var(--accent1));
+    display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6), inset 0 -6px 18px rgba(255,255,255,0.06);
+    transform: translateZ(20px);
+  }
+  .brand h1{margin:0;font-size:20px}
+  nav a{
+    color:var(--text);text-decoration:none;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);margin-left:8px;
+    transition:all .18s;
+  }
+  nav a:hover{transform:translateY(-4px);background:rgba(255,255,255,0.03);}
+
+  /* Hero */
+  .hero{
+    display:flex;gap:20px;align-items:center;margin-top:22px;padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .hero-left{flex:1}
+  .hero h2{margin:0;font-size:28px;line-height:1.05}
+  .hero p{color:rgba(231,251,255,0.85);margin-top:8px}
+  .cta{margin-top:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04161a;font-weight:700;cursor:pointer;
+    box-shadow:0 10px 30px rgba(79,172,254,0.12);text-decoration:none;
+  }
+
+  .hero-visual{width:260px;display:flex;justify-content:center;align-items:center}
+  .device{
+    width:260px;height:160px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    display:flex;justify-content:center;align-items:center;box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    transform: perspective(800px) rotateX(8deg) rotateY(-8deg);
+    transition: transform .6s;
+  }
+  .device:hover{transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateZ(8px) scale(1.02)}
+
+  /* Tools grid */
+  .grid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{
+    background:var(--card-bg);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);
+    display:flex;align-items:center;gap:14px;transition: transform .28s, box-shadow .28s;
+    transform-style:preserve-3d;
+  }
+  .card:hover{transform: translateY(-12px) rotateX(3deg);box-shadow: 0 30px 60px rgba(0,0,0,0.7)}
+  .icon{
+    width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    display:flex;align-items:center;justify-content:center;font-size:26px;color:#04161a;box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  }
+  .meta{flex:1}
+  .meta h3{margin:0;font-size:16px}
+  .meta p{margin:6px 0 0;color:rgba(230,247,255,0.8);font-size:13px}
+  .open-btn{margin-left:auto;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);text-decoration:none;transition:all .18s}
+  .open-btn:hover{transform:translateY(-6px);background:rgba(255,255,255,0.03)}
+
+  footer{margin-top:28px;text-align:center;color:rgba(231,251,255,0.75);padding:18px}
+
+  /* 3D subtle parallax */
+  .card, .device{will-change:transform}
+  .card[data-tilt] { transform-origin: center; }
+
+  /* SEO content styles */
+  .seo-block { margin-top: 26px; padding: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border-radius: 12px; color: rgba(231,251,255,0.95); line-height: 1.8; font-size: 15px; }
+  .seo-block h2 { color: #e7fbff; margin-top: 0; }
+  .seo-block h3 { color: #e7fbff; }
+  .seo-block p { margin-bottom: 12px; }
+  .seo-block ul { margin-left: 18px; }
+  .seo-images { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
+  .seo-images img { width:100%; max-width:360px; border-radius:10px; }
+  .faq { background: rgba(0,0,0,0.05); padding:12px; border-radius:8px; margin-top:12px; }
+
+  @media (max-width:900px){
+    .hero{flex-direction:column;text-align:center}
+    .hero-visual{order:-1}
+  }
+</style>
+</head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo">MT</div>
+        <div class="logo" aria-hidden><i class="fa fa-toolbox"></i></div>
         <div>
           <h1>MegaToolsOnline</h1>
-          <div style="font-size:12px;color:rgba(231,251,255,0.75)">Free online calculators & utilities — fast, privacy friendly</div>
+          <div style="font-size:12px;color:rgba(231,251,255,0.8)">Fast tools • Calculators • Converters</div>
         </div>
       </div>
+
       <nav>
-        <a href="index.htm">Home</a>
         <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
-        <h2 id="hero-title">Fast • Accurate • Free — 20 Essential Tools</h2>
-        <p>Everything you need: calculators, converters, productivity helpers and useful utilities — no sign-up, mobile-first, privacy-focused.</p>
+        <h2 id="hero-title">20 Free Online Tools — Modern & Fast</h2>
+        <p>Useful calculators, converters and utilities. Click any tool to open and use it instantly — fully client-side and privacy friendly.</p>
+        <div class="cta"><a class="btn" href="#tools">Explore Tools <i class="fa fa-arrow-right"></i></a></div>
       </div>
-      <!-- dynamic unsplash placeholder; replace with your own image if you have one -->
-      <img src="https://source.unsplash.com/featured/?tools,technology" alt="MegaToolsOnline tools preview" loading="lazy" />
+
+      <div class="hero-visual">
+        <div class="device" role="img" aria-label="tools preview">
+          <div style="text-align:center;color:rgba(231,251,255,0.9)">
+            <div style="font-weight:700">MegaTools</div>
+            <div style="font-size:12px;margin-top:6px">20 tools • instant access</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Tools grid: buttons link to your pages (filenames match your sitemap) -->
     <main id="tools">
       <div class="grid">
-        <div class="card">
-          <div class="icon">AC</div>
-          <div class="meta"><h3>Age Calculator</h3><p>Exact DOB → age in years, months & days.</p></div>
-          <a class="open" href="age-calculator.html">Open</a>
+
+        <!-- 1 Age Calculator (correct name + calculator icon) -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-calculator"></i></div>
+          <div class="meta">
+            <h3>Age Calculator</h3>
+            <p>Calculate age in years, months and days.</p>
+          </div>
+          <a class="open-btn" href="age-calculator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">BMI</div>
-          <div class="meta"><h3>BMI Calculator</h3><p>Height & weight BMI + ideal range.</p></div>
-          <a class="open" href="bmi-calculator.html">Open</a>
+        <!-- 2 BMI -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-heartbeat"></i></div>
+          <div class="meta">
+            <h3>BMI Calculator</h3>
+            <p>Body Mass Index check.</p>
+          </div>
+          <a class="open-btn" href="bmi-calculator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">TZ</div>
-          <div class="meta"><h3>Time Zone Meeting Overlap</h3><p>Find best overlapping meeting times.</p></div>
-          <a class="open" href="timezone-overlap.html">Open</a>
+        <!-- 3 Percentage -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-percent"></i></div>
+          <div class="meta">
+            <h3>Percentage Calculator</h3>
+            <p>Percent, change & difference.</p>
+          </div>
+          <a class="open-btn" href="percentage-calculator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">SC</div>
-          <div class="meta"><h3>Sleep Cycle Wake-Up</h3><p>90-minute cycle based wake-up times.</p></div>
-          <a class="open" href="sleep-cycle-calculator.html">Open</a>
+        <!-- 4 Password -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-key"></i></div>
+          <div class="meta">
+            <h3>Password Generator</h3>
+            <p>Create strong random passwords.</p>
+          </div>
+          <a class="open-btn" href="password-generator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">W</div>
-          <div class="meta"><h3>Drinking Water Intake</h3><p>Personalized daily hydration guide.</p></div>
-          <a class="open" href="water-intake-calculator.html">Open</a>
+        <!-- 5 QR -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-qrcode"></i></div>
+          <div class="meta">
+            <h3>QR Code Generator</h3>
+            <p>Generate QR codes for URLs & text.</p>
+          </div>
+          <a class="open-btn" href="qr-generator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">KB</div>
-          <div class="meta"><h3>Kids Ideal Bedtime</h3><p>Recommended bed & wake schedule by age.</p></div>
-          <a class="open" href="kids-bedtime-calculator.html">Open</a>
+        <!-- 6 Loan -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-money-bill"></i></div>
+          <div class="meta">
+            <h3>Loan / EMI Calculator</h3>
+            <p>Monthly EMI & schedule.</p>
+          </div>
+          <a class="open-btn" href="loan-calculator.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">TS</div>
-          <div class="meta"><h3>Tip Split Calculator</h3><p>Split bill & tip per person easily.</p></div>
-          <a class="open" href="tip-split-calculator.html">Open</a>
+        <!-- 7 Stopwatch -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-stopwatch"></i></div>
+          <div class="meta">
+            <h3>Stopwatch</h3>
+            <p>Simple stopwatch with laps.</p>
+          </div>
+          <a class="open-btn" href="stopwatch.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">PD</div>
-          <div class="meta"><h3>Pregnancy Due Date</h3><p>Estimate delivery date by LMP or conception.</p></div>
-          <a class="open" href="pregnancy-due-date.html">Open</a>
+        <!-- 8 Timer -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-hourglass-half"></i></div>
+          <div class="meta">
+            <h3>Countdown Timer</h3>
+            <p>Custom timer with alarm.</p>
+          </div>
+          <a class="open-btn" href="timer.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">CB</div>
-          <div class="meta"><h3>Calorie Burn (Steps)</h3><p>Estimate calories from steps & activity.</p></div>
-          <a class="open" href="calorie-burn-calculator.html">Open</a>
+        <!-- 9 World Clock -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-globe"></i></div>
+          <div class="meta">
+            <h3>World Clock</h3>
+            <p>World time & timezone converter.</p>
+          </div>
+          <a class="open-btn" href="world-clock.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">EC</div>
-          <div class="meta"><h3>Emotion Color Indicator</h3><p>Quick mood → color mapping & meaning.</p></div>
-          <a class="open" href="emotion-color-indicator.html">Open</a>
+        <!-- 10 Unit Converter -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-balance-scale"></i></div>
+          <div class="meta">
+            <h3>Unit Converter</h3>
+            <p>Length, weight, volume and more.</p>
+          </div>
+          <a class="open-btn" href="unit-converter.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">MB</div>
-          <div class="meta"><h3>Monthly Budget Splitter</h3><p>Divide salary into smart buckets.</p></div>
-          <a class="open" href="budget-splitter.html">Open</a>
+        <!-- 11 Word Counter -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-file-word"></i></div>
+          <div class="meta">
+            <h3>Word Counter</h3>
+            <p>Count words, chars & reading time.</p>
+          </div>
+          <a class="open-btn" href="word-counter.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">TT</div>
-          <div class="meta"><h3>TikTok Hashtag Tool</h3><p>Generate trending hashtags & copy list.</p></div>
-          <a class="open" href="tiktok-hashtag-tool.html">Open</a>
+        <!-- 12 Image Compressor -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-image"></i></div>
+          <div class="meta">
+            <h3>Image Compressor</h3>
+            <p>Compress images for web.</p>
+          </div>
+          <a class="open-btn" href="image-compressor.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">PA</div>
-          <div class="meta"><h3>Pet Age Calculator</h3><p>Convert dog/cat years to human years.</p></div>
-          <a class="open" href="pet-age-calculator.html">Open</a>
+        <!-- 13 JSON Formatter -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-code"></i></div>
+          <div class="meta">
+            <h3>JSON Formatter</h3>
+            <p>Format, validate & minify JSON.</p>
+          </div>
+          <a class="open-btn" href="json-formatter.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">BG</div>
-          <div class="meta"><h3>Baby Growth Percentile</h3><p>Track child's weight/height percentiles.</p></div>
-          <a class="open" href="baby-growth-calculator.html">Open</a>
+        <!-- 14 Base64 -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-database"></i></div>
+          <div class="meta">
+            <h3>Base64 Encode / Decode</h3>
+            <p>Encode or decode Base64 strings.</p>
+          </div>
+          <a class="open-btn" href="base64.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">LP</div>
-          <div class="meta"><h3>Loan Payoff Date</h3><p>Find when your loan will be fully paid.</p></div>
-          <a class="open" href="loan-payoff-calculator.html">Open</a>
+        <!-- 15 URL Encoder -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-link"></i></div>
+          <div class="meta">
+            <h3>URL Encoder / Decoder</h3>
+            <p>Encode or decode URL parts.</p>
+          </div>
+          <a class="open-btn" href="url-encoder.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">PT</div>
-          <div class="meta"><h3>Productivity Timer</h3><p>Pomodoro & focus sessions with breaks.</p></div>
-          <a class="open" href="productivity-timer.html">Open</a>
+        <!-- 16 Random -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-random"></i></div>
+          <div class="meta">
+            <h3>Random Number Generator</h3>
+            <p>Generate secure random numbers.</p>
+          </div>
+          <a class="open-btn" href="random.html">Open</a>
         </div>
 
-        <div class="card">
-          <div class="icon">HR</div>
-          <div class="meta"><h3>Heart Rate Zone Calculator</h3><p>Find training zones for fat burn & peak.</p></div>
-          <a class="open" href="heart-rate-zone-calculator.html">Open</a>
+        <!-- 17 PDF to JPG -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-file-pdf"></i></div>
+          <div class="meta">
+            <h3>PDF to JPG</h3>
+            <p>Convert PDF pages into images.</p>
+          </div>
+          <a class="open-btn" href="pdf-to-jpg.html">Open</a>
         </div>
 
-      </div>
+        <!-- 18 Case Converter -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-font"></i></div>
+          <div class="meta">
+            <h3>Text Case Converter</h3>
+            <p>Uppercase, lowercase & title case.</p>
+          </div>
+          <a class="open-btn" href="case-converter.html">Open</a>
+        </div>
+
+        <!-- 19 Currency -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-exchange-alt"></i></div>
+          <div class="meta">
+            <h3>Currency Converter</h3>
+            <p>Convert currencies (add live rates later).</p>
+          </div>
+          <a class="open-btn" href="currency-converter.html">Open</a>
+        </div>
+
+        <!-- 20 Minifier -->
+        <div class="card" data-tilt>
+          <div class="icon"><i class="fa fa-compress"></i></div>
+          <div class="meta">
+            <h3>HTML / CSS Minifier</h3>
+            <p>Minify front-end code for faster load.</p>
+          </div>
+          <a class="open-btn" href="minifier.html">Open</a>
+        </div>
+
+      </div> <!-- grid -->
     </main>
 
-    <!-- Long SEO content block ~5000 characters (copy this whole block into homepage) -->
-    <article class="seo" id="homepage-seo">
-      <h2>Welcome to MegaToolsOnline — Your Free Online Tools Hub</h2>
+    <!-- SEO content block (very large, keyword-dense) -->
+    <article class="seo-block" id="homepage-seo">
+      <h2>Welcome to MegaToolsOnline — the Free Online Tools & Calculators Hub</h2>
 
       <p>
-        MegaToolsOnline is a curated collection of <strong>free online tools</strong> designed to make everyday tasks faster and easier.
-        We focus on practical utilities that people search for every day: accurate calculators, productivity helpers, small business utilities,
-        health and fitness tools, parent & baby trackers, and social media helpers. Each tool is built to be <strong>fast, mobile friendly, privacy focused</strong>,
-        and accessible without login or installation. Whether you need an <strong>age calculator</strong>, <strong>BMI checker</strong>, a quick
-        <strong>time zone meeting overlap finder</strong>, or a <strong>TikTok hashtag suggestions tool</strong>—MegaToolsOnline aims to provide reliable
-        and lightweight utilities for users around the world.
+        MegaToolsOnline is a focused collection of fast, free, and mobile-friendly <strong>online tools</strong>, calculators and utilities designed to make everyday tasks simpler and faster.
+        Our goal is to provide dependable, privacy-friendly, no-login tools that solve real needs: quick calculations, conversions, scheduling helpers, health estimators, content growth helpers, and developer utilities.
+        Every utility on MegaToolsOnline is built with performance and usability in mind so you can <strong>calculate, convert, plan and share</strong> without ads, popups or signups.
       </p>
+
+      <h3>Why choose MegaToolsOnline?</h3>
+      <p>
+        Users choose MegaToolsOnline because we focus on the essentials: accuracy, speed, and clarity. Our collection includes widely searched utilities (age calculator, BMI calculator),
+        highly practical scheduling helpers (time zone overlap finder, sleep cycle wake-up calculator), parenting tools (baby growth percentile, kids ideal bedtime),
+        finance helpers (loan payoff date, monthly budget splitter, tip split calculator) and content creator tools (TikTok hashtag suggestions).
+        Each page has a clear <strong>how-to</strong> guide, examples and short FAQs so you get results fast.
+      </p>
+
+      <h3>What you'll find on the homepage</h3>
+      <p>
+        This homepage lists our core 20 tools with direct access. The pages linked above include:
+      </p>
+      <ul>
+        <li><strong>Age Calculator</strong> — calculate exact age from DOB in years, months and days.</li>
+        <li><strong>BMI Calculator</strong> — check Body Mass Index and ideal weight range.</li>
+        <li><strong>Time Zone Meeting Overlap</strong> — find overlapping working hours across countries.</li>
+        <li><strong>Sleep Cycle Wake-Up</strong> — find sleep and wake times using 90-minute cycle logic.</li>
+        <li><strong>Drinking Water Intake</strong> — calculate daily water needs by weight & activity.</li>
+        <li><strong>Kids Ideal Bedtime</strong> — recommended bedtime by age group.</li>
+        <li><strong>Tip Split Calculator</strong> — split bill and tip among friends with rounding options.</li>
+        <li><strong>Pregnancy Due Date</strong> — estimate delivery date by LMP or conception.</li>
+        <li><strong>Calorie Burn (Steps)</strong> — convert steps to estimated calories burned.</li>
+        <li><strong>Emotion Color Indicator</strong> — quick mood color mapping & explanation.</li>
+        <li><strong>Monthly Budget Splitter</strong> — divide salary into rent, food, savings and more.</li>
+        <li><strong>TikTok Hashtag Tool</strong> — trending hashtag suggestions for TikTok videos.</li>
+        <li><strong>Pet Age Calculator</strong> — convert dog or cat age to human years with breed adjustments.</li>
+        <li><strong>Baby Growth Percentile</strong> — check child's weight and height percentiles against standards.</li>
+        <li><strong>Loan Payoff Date</strong> — find exact payoff date from amount, payment & extra contributions.</li>
+        <li><strong>Productivity Timer</strong> — Pomodoro and session tracking for focused work.</li>
+        <li><strong>Heart Rate Zone Calculator</strong> — training zones by age and resting heart rate.</li>
+        <li><strong>Currency Converter</strong> — simple exchange conversion (live rates optional).</li>
+        <li><strong>URL Encoder / Decoder</strong> — safe encoding/decoding for web developers.</li>
+        <li><strong>HTML / CSS Minifier</strong> — compress front-end code for faster pages.</li>
+      </ul>
+
+      <h3>Long-tail keywords & search phrases we target</h3>
+      <p>
+        To ensure our tools are discoverable we optimize each page for many long-tail, low-competition search queries such as:
+      </p>
+      <ul>
+        <li>calculate age from dob in years months days online</li>
+        <li>best free bmi checker height weight ideal weight range</li>
+        <li>time zone overlap finder for remote teams</li>
+        <li>sleep cycle calculator best time to wake up 90 minute cycles</li>
+        <li>how much water should I drink daily calculator by weight</li>
+        <li>kids bedtime schedule recommended hours by age</li>
+        <li>split bill tip per person calculator rounding</li>
+        <li>due date calculator by last menstrual period (LMP)</li>
+        <li>steps to calories burned calculator accurate</li>
+        <li>dog age to human years calculator small medium large breeds</li>
+        <li>baby growth percentile calculator percentiles by age weight height</li>
+        <li>loan payoff date calculator calculate when loan will be paid off</li>
+        <li>pomodoro timer online free focus timer with breaks</li>
+        <li>heart rate zones calculator fat burn cardio peak</li>
+        <li>tiktok hashtag suggestions generator free trending tags</li>
+      </ul>
 
       <p>
-        Our tools are made for both casual users and professionals. Students use our calculators for homework,
-        freelancers and remote teams use the time-zone and scheduling utilities, parents rely on baby growth percentile calculators,
-        fitness users track calorie burn and heart-rate zones, and content creators use our hashtag and productivity tools to grow engagement.
-        Every page includes an easy-to-use interface, short guidance text, and examples so you get actionable results instantly.
+        These long-tail phrases (and hundreds more variations) are embedded naturally in each tool page's content, headings and FAQs to help our pages rank quickly for queries that users actually type.
+        The result: early organic visibility for specific needs even if global head-keywords are competitive.
       </p>
 
+      <h3>How each tool is optimized for search & users</h3>
       <p>
-        Because many high-demand tools online are either buried under ads or locked behind paywalls, MegaToolsOnline focuses on
-        filling those gaps with <strong>zero-compromise free tools</strong>. Each tool page includes a short explanation of how it works,
-        sample inputs & outputs, and a small FAQ. We also optimize each page for long-tail queries (for example: "calculate age from dob in years months days",
-        "best meeting overlap time for US and UK", "sleep cycle wake up calculator 90 minute cycles", "how much water should I drink by weight")
-        so users searching specific needs discover our tools quickly.
+        For every tool we follow the same optimization checklist:
       </p>
+      <ul>
+        <li><strong>Clear H1 & Title:</strong> exact match for the main searchable phrase, e.g., "Sleep Cycle Wake-Up Calculator".</li>
+        <li><strong>Concise Meta Description:</strong> CTR-focused description with long-tail variant included.</li>
+        <li><strong>Helpful Content:</strong> 200–500 words explaining how to use the tool, examples and edge-cases.</li>
+        <li><strong>FAQ Section:</strong> 3–6 FAQs per page to target "People also ask" queries and enable rich snippets.</li>
+        <li><strong>Mobile-first UI:</strong> fast interactive calculators with minimal JS and client-side calculations to avoid slow server calls.</li>
+        <li><strong>Internal Links:</strong> link related tools from each page (e.g., age calculator links to pet age calculator page when relevant).</li>
+      </ul>
 
-      <p>
-        Want to speed up your workflow? Try the <strong>Time Zone Meeting Overlap Finder</strong> to pick a meeting hour that fits participants across countries.
-        Planning sleep or shift schedules? The <strong>Sleep Cycle Wake-Up Calculator</strong> recommends best wake times based on 90-minute cycles.
-        Managing personal finance? Use the <strong>Monthly Budget Splitter</strong> and the <strong>Loan Payoff Date Calculator</strong> to plan smarter.
-      </p>
-
-      <p>
-        We encourage sharing—each tool includes social copy buttons so you can share results with colleagues or friends.
-        If you run a blog, YouTube channel, or community page, feel free to link to our tools; backlinks help us grow and keep everything free.
-        Want a new tool? Contact us and we’ll prioritize high-impact, low-competition utilities that the global audience needs.
-      </p>
-
-      <img src="https://source.unsplash.com/featured/?calculator,productivity" alt="online tools illustration" loading="lazy" />
-
-      <h3>How to Use These Tools</h3>
-      <ol>
-        <li>Choose the tool from the grid above (Age, BMI, Time Zone, Sleep Cycle, etc.).</li>
-        <li>Read the short instructions on the tool page; input your values (date of birth, weight, steps, timezones, etc.).</li>
-        <li>Click calculate and copy/share the result if needed.</li>
-      </ol>
-
-      <h3>Frequently Asked Questions</h3>
-      <div class="faq">
-        <p><strong>Q:</strong> Are these tools free to use?<br><strong>A:</strong> Yes — all tools on MegaToolsOnline are 100% free and require no sign-up.</p>
-        <p><strong>Q:</strong> Do you store user data?<br><strong>A:</strong> No — by design we keep everything client-side whenever possible and do not store personal input.</p>
-        <p><strong>Q:</strong> How can I request a new tool?<br><strong>A:</strong> Use the Contact page and suggest a high-value utility; we add popular requests every week.</p>
+      <div class="seo-images">
+        <img src="https://source.unsplash.com/collection/190727/800x600" alt="online tools" loading="lazy" />
+        <img src="https://source.unsplash.com/featured/?calculator,code" alt="calculator and code" loading="lazy" />
       </div>
 
-      <p style="margin-top:12px">
-        <strong>Keywords & Topics Covered:</strong> free online tools, best online calculators 2025, time zone meeting overlap finder, sleep cycle calculator,
-        water intake calculator, tip split calculator, pregnancy due date estimator, steps to calories calculator, pet age converter, baby growth percentile,
-        loan payoff planner, pomodoro productivity timer, heart rate training zones, url encode/decode, html css minifier.
+      <h3>Sample SEO snippets you can spot on tool pages</h3>
+      <p>
+        Each tool page contains short SEO-optimized snippets like:
       </p>
+      <ul>
+        <li><em>How to calculate your exact age from date of birth — Age Calculator example</em></li>
+        <li><em>Find overlapping working hours between Pakistan and USA — Time Zone Meeting Overlap tool</em></li>
+        <li><em>Best sleep cycle wake up times for shift workers — Sleep Cycle Wake-Up Calculator</em></li>
+        <li><em>Hourly calorie burn estimation by steps and walking speed — Steps-based Calorie Burn Calculator</em></li>
+      </ul>
+
+      <h3>Practical examples (real user queries we aim to capture)</h3>
+      <p>
+        People search in natural language and we match it. Example queries:
+      </p>
+      <ul>
+        <li>"what is my age in months and days from my birthdate"</li>
+        <li>"how many glasses of water a day for 70 kg person calculator"</li>
+        <li>"best time to meet someone in london from karachi overlap"</li>
+        <li>"if i sleep at 11pm when to wake up for 6 sleep cycles"</li>
+        <li>"how many calories do 10000 steps burn male 30 years old"</li>
+      </ul>
+
+      <h3>How you can help this free project grow (quick & effective)</h3>
+      <p>
+        If you like MegaToolsOnline, do any of these small actions to help us rank faster:
+      </p>
+      <ol>
+        <li>Share a tool link on social media (Twitter/X, Facebook, Reddit).</li>
+        <li>Add a short mention on your blog or YouTube description (we appreciate backlinks).</li>
+        <li>Use the contact page to request a tool — popular requests get priority.</li>
+      </ol>
+
+      <h3>Detailed FAQ — (targeted for search snippets)</h3>
+      <div class="faq">
+        <p><strong>Q: Are tools on MegaToolsOnline free?</strong><br>A: Yes, all tools are 100% free to use with no registration required.</p>
+        <p><strong>Q: Does MegaToolsOnline store my personal data?</strong><br>A: No. Wherever possible we run calculations client-side in your browser so nothing is sent to servers. Read our Privacy page for details.</p>
+        <p><strong>Q: How do I request a new tool?</strong><br>A: Visit the Contact page and send a short description — we add high-demand, low-competition tools weekly.</p>
+        <p><strong>Q: Will these tools work on mobile?</strong><br>A: Yes. All tools are responsive and optimized for mobile browsers and desktop.</p>
+      </div>
+
+      <h3>Technical SEO & indexing tips (for site owner)</h3>
+      <p>
+        To maximize indexing and ranking speed for this GitHub Pages site:
+      </p>
+      <ul>
+        <li>Ensure sitemap.xml lists each tool URL exactly as uploaded (you already have one).</li>
+        <li>Use Google Search Console -> URL Inspection -> Request Indexing for homepage after uploading large content.</li>
+        <li>Share 3–5 backlinks in relevant communities (Quora answers, Reddit threads, relevant blog comment) — even a handful speeds up brand discovery.</li>
+        <li>Keep each tool page with 200–500 words and an FAQ snippet for rich results.</li>
+      </ul>
+
+      <h3>Closing notes</h3>
+      <p>
+        MegaToolsOnline aims to be the fastest, most practical free toolkit on the web for daily calculations, conversions, and planning helpers. If you need a custom version,
+        white-label embed code, or a specific analytics suggestion, contact us via the Contact page and we’ll prioritize sites that bring real user value.
+      </p>
+
+      <p style="margin-top:14px; font-weight:600;">
+        Keywords: MegaToolsOnline, free online tools, age calculator online, bmi checker, timezone overlap finder, sleep cycle calculator, water intake calculator,
+        tip split calculator, pregnancy due date estimator, calorie burn steps calculator, tiktok hashtag suggestions, pet age to human years, baby growth percentile,
+        loan payoff date calculator, productivity timer, heart rate zone calculator, online converters, url encoder, html css minifier.
+      </p>
+
     </article>
 
     <footer>
-      <div style="font-size:13px">© 2025 MegaToolsOnline — Free online utilities • <a href="privacy.html" style="color:var(--muted)">Privacy</a> • <a href="contact.html" style="color:var(--muted)">Contact</a></div>
+      © 2025 MegaToolsOnline — <a href="privacy.html" style="color:rgba(231,251,255,0.9)">Privacy</a> • <a href="contact.html" style="color:rgba(231,251,255,0.9)">Contact</a>
     </footer>
-
   </div>
 
   <script>
-    // small tilt/hover effect
-    document.querySelectorAll('.card').forEach(el=>{
-      el.addEventListener('mousemove', e=>{
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left)/r.width - .5;
-        const y = (e.clientY - r.top)/r.height - .5;
+    // tiny tilt / parallax for cards & device
+    document.querySelectorAll('[data-tilt], .device').forEach(el=>{
+      el.addEventListener('mousemove', (e)=>{
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
         el.style.transform = `translateY(-8px) rotateX(${(-y*6)}deg) rotateY(${(x*8)}deg)`;
       });
       el.addEventListener('mouseleave', ()=> el.style.transform = '');
