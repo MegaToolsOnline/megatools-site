@@ -1,285 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MegaToolsOnline – Free Online Tools & Calculators | Fast & Secure</title>
-
-<meta name="description" content="MegaToolsOnline provides free online tools and calculators including Age Calculator, BMI Calculator, Dog Age Calculator, Time Zone Overlap Finder and more. Fast, secure and no login required.">
-
-<meta name="keywords" content="megatoolsonline, free online tools, online calculators, dog age calculator, dog years to human years, age calculator online, bmi calculator, free calculator website">
-
-<link rel="icon" href="favicon.ico">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MegaToolsOnline – Free Online Calculators & Utilities</title>
+<meta name="description" content="MegaToolsOnline offers free online tools like Dog Age Calculator, Age Calculator, BMI Calculator, Percentage Calculator, Password Generator, QR Code Generator and more. Fast, modern, SEO optimized tools for everyone." />
+<meta name="keywords" content="megatoolsonline, dog age calculator, age calculator online, bmi calculator free, percentage calculator, password generator, qr code generator, loan calculator, stopwatch online, timer online, world clock, unit converter, word counter, image compressor" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <style>
 :root{
-  --bg1:#060b1f;
-  --bg2:#0c1a33;
-  --glass:rgba(255,255,255,0.06);
-  --card:rgba(255,255,255,0.08);
-  --accent1:#4facfe;
-  --accent2:#00f2fe;
-  --text:#eaf6ff;
+  --bg1:#050b1a;
+  --bg2:#0a1f33;
+  --accent:#00f2fe;
+  --accent2:#4facfe;
+  --card:rgba(255,255,255,0.06);
+  --text:#eafcff;
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
-  font-family:Inter,system-ui,Arial;
+  font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  background:radial-gradient(800px 400px at 10% 10%,rgba(79,172,254,0.08),transparent 40%),
+             radial-gradient(700px 350px at 90% 90%,rgba(0,242,254,0.06),transparent 45%),
+             linear-gradient(180deg,var(--bg1),var(--bg2));
   color:var(--text);
-  background:
-    radial-gradient(800px 400px at 10% 10%, rgba(79,172,254,0.15), transparent 40%),
-    radial-gradient(700px 350px at 90% 80%, rgba(0,242,254,0.12), transparent 45%),
-    linear-gradient(180deg,var(--bg1),var(--bg2));
 }
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:auto;padding:20px}
 
-.wrap{max-width:1250px;margin:auto;padding:22px}
-
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
+header{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:12px;align-items:center}
 .logo{
-  width:60px;height:60px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--accent1),var(--accent2));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  color:#04202a;
-  font-size:22px;
-  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:#04161a;
+  box-shadow:0 15px 40px rgba(0,0,0,.6)
 }
+nav a{margin-left:10px;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.08)}
+nav a:hover{background:rgba(255,255,255,0.06)}
 
-.brand h1{margin:0;font-size:22px}
-
-nav a{
-  margin-left:10px;
-  padding:10px 14px;
-  border-radius:12px;
-  text-decoration:none;
-  color:var(--text);
-  border:1px solid rgba(255,255,255,0.08);
-  transition:.25s;
-}
-
-nav a:hover{
-  background:linear-gradient(90deg,var(--accent1),var(--accent2));
-  color:#04202a;
-}
-
-/* HERO */
 .hero{
+  margin-top:30px;
+  padding:40px;
+  border-radius:20px;
   display:grid;
-  grid-template-columns:1.2fr .8fr;
+  grid-template-columns:1.2fr 1fr;
   gap:30px;
-  padding:30px;
-  border-radius:22px;
-  background:var(--glass);
-  backdrop-filter:blur(10px);
-  box-shadow:0 40px 90px rgba(0,0,0,.6);
+  background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  backdrop-filter:blur(8px);
+  box-shadow:0 30px 80px rgba(0,0,0,.7)
 }
-
-.hero h2{font-size:36px;margin:0}
-.hero p{opacity:.9;font-size:16px}
-
-.hero img{
-  width:100%;
-  border-radius:18px;
-  box-shadow:0 30px 80px rgba(0,0,0,.7);
-}
-
-/* BUTTON */
+.hero h1{font-size:36px;margin:0}
+.hero p{color:rgba(234,252,255,0.85);font-size:17px}
+.hero img{width:100%;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 .btn{
-  display:inline-flex;
-  gap:10px;
-  margin-top:16px;
-  padding:14px 20px;
-  border-radius:16px;
-  background:linear-gradient(90deg,var(--accent1),var(--accent2));
-  color:#04202a;
-  text-decoration:none;
-  font-weight:700;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  margin-top:16px;display:inline-flex;gap:10px;align-items:center;
+  padding:12px 18px;border-radius:14px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#04161a;font-weight:700
 }
 
-/* TOOLS GRID */
-.grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-}
+.section{margin-top:60px}
+.section h2{text-align:center;font-size:28px;margin-bottom:10px}
+.section p{text-align:center;color:rgba(234,252,255,0.8)}
 
+.tools{display:none;margin-top:30px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.tools.show{display:grid}
 .card{
   background:var(--card);
-  padding:20px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.1);
-  display:flex;
-  gap:14px;
-  transition:.35s;
-  transform-style:preserve-3d;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  padding:18px;
+  display:flex;gap:14px;align-items:center;
+  transition:.4s;transform-style:preserve-3d
 }
-
-.card:hover{
-  transform:translateY(-12px) rotateX(4deg);
-  box-shadow:0 40px 80px rgba(0,0,0,.7);
-}
-
+.card:hover{transform:translateY(-12px) rotateX(4deg);box-shadow:0 30px 70px rgba(0,0,0,.7)}
 .icon{
-  width:60px;height:60px;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--accent1),var(--accent2));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  color:#04202a;
+  width:64px;height:64px;border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;color:#04161a
 }
+.meta h3{margin:0;font-size:17px}
+.meta p{margin:6px 0 0;font-size:13px;color:rgba(234,252,255,0.75)}
+.open{margin-left:auto;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.15)}
 
-.meta h3{margin:0}
-.meta p{margin:6px 0 0;font-size:13px;opacity:.9}
-
-.open-btn{
-  margin-left:auto;
-  align-self:center;
-  padding:10px 14px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.15);
-  text-decoration:none;
-  color:var(--text);
-}
-
-.open-btn:hover{
-  background:linear-gradient(90deg,var(--accent1),var(--accent2));
-  color:#04202a;
-}
-
-/* SEO CONTENT */
-.seo{
-  margin-top:50px;
-  padding:30px;
-  background:var(--glass);
-  border-radius:22px;
-  line-height:1.8;
-}
-
-.seo h2,.seo h3{color:#fff}
-
-/* FOOTER */
-footer{
-  margin-top:40px;
-  text-align:center;
-  opacity:.8;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-}
+footer{text-align:center;margin-top:60px;color:rgba(234,252,255,0.7);font-size:14px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
 <div class="wrap">
-
 <header>
-  <div class="brand">
-    <div class="logo">MT</div>
-    <div>
-      <h1>MegaToolsOnline</h1>
-      <div style="font-size:13px;opacity:.8">Free Online Tools & Calculators</div>
-    </div>
-  </div>
+  <div class="brand"><div class="logo"><i class="fa fa-toolbox"></i></div><strong>MegaToolsOnline</strong></div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="sitemap.xml">Sitemap</a>
+    <a href="#">Home</a>
     <a href="about.html">About</a>
-    <a href="privacy.html">Privacy</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
   <div>
-    <h2>Free Online Tools & Calculators</h2>
-    <p>
-      MegaToolsOnline is a professional collection of free online tools including
-      age calculator, BMI calculator, dog age calculator, and many more.
-      No login, no ads, fast and secure.
-    </p>
-    <a class="btn" href="#tools">Explore Tools <i class="fa fa-arrow-right"></i></a>
+    <h1>Free Online Calculators & Tools</h1>
+    <p>MegaToolsOnline provides fast, accurate and modern tools including Dog Age Calculator, Age Calculator, BMI Calculator, Password Generator and many more — fully free and mobile friendly.</p>
+    <a href="#tools" class="btn" onclick="toggleTools()">Explore Tools <i class="fa fa-arrow-down"></i></a>
   </div>
-  <img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=900&q=80" alt="online tools">
+  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="online tools" />
 </section>
 
-<main id="tools" class="grid">
-
-<!-- Dog Age Calculator -->
-<div class="card">
-  <div class="icon"><i class="fa fa-dog"></i></div>
-  <div class="meta">
-    <h3>Dog Age Calculator</h3>
-    <p>Convert dog years to human years and human years to dog years accurately.</p>
-  </div>
-  <a class="open-btn" href="dog-age-calculator.html">Open</a>
-</div>
-
-<!-- Age Calculator -->
-<div class="card">
-  <div class="icon"><i class="fa fa-calculator"></i></div>
-  <div class="meta">
-    <h3>Age Calculator</h3>
-    <p>Calculate exact age in years, months and days.</p>
-  </div>
-  <a class="open-btn" href="age-calculator.html">Open</a>
-</div>
-
-<!-- BMI -->
-<div class="card">
-  <div class="icon"><i class="fa fa-heartbeat"></i></div>
-  <div class="meta">
-    <h3>BMI Calculator</h3>
-    <p>Check body mass index and healthy weight range.</p>
-  </div>
-  <a class="open-btn" href="bmi-calculator.html">Open</a>
-</div>
-
-</main>
-
-<section class="seo">
-<h2>MegaToolsOnline – Trusted Free Online Tools</h2>
-<p>
-MegaToolsOnline is designed to rank for long-tail keywords like
-<strong>dog age calculator</strong>, <strong>free online tools</strong>,
-<strong>online calculators</strong> and <strong>megatoolsonline</strong>.
-Every tool is lightweight, SEO-optimized and built for global users.
-</p>
+<section class="section">
+  <h2>Popular Tools</h2>
+  <p>Most searched calculators loved by users worldwide</p>
 </section>
 
-<footer>
-© 2025 MegaToolsOnline • Free Online Tools & Calculators
-</footer>
+<section id="tools" class="tools">
+<!-- Core tools -->
+<div class="card"><div class="icon"><i class="fa fa-dog"></i></div><div class="meta"><h3>Dog Age Calculator</h3><p>Convert dog years to human years.</p></div><a class="open" href="dog-age-calculator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-calculator"></i></div><div class="meta"><h3>Age Calculator</h3><p>Calculate age in years, months & days.</p></div><a class="open" href="age-calculator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-heartbeat"></i></div><div class="meta"><h3>BMI Calculator</h3><p>Check body mass index instantly.</p></div><a class="open" href="bmi-calculator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-percent"></i></div><div class="meta"><h3>Percentage Calculator</h3><p>Find percentages easily.</p></div><a class="open" href="percentage-calculator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-key"></i></div><div class="meta"><h3>Password Generator</h3><p>Create strong random passwords.</p></div><a class="open" href="password-generator.html">Open</a></div>
 
+<!-- Other tools -->
+<div class="card"><div class="icon"><i class="fa fa-qrcode"></i></div><div class="meta"><h3>QR Code Generator</h3><p>Generate QR codes online.</p></div><a class="open" href="qr-generator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-money-bill"></i></div><div class="meta"><h3>Loan Calculator</h3><p>Calculate EMI & loan payoff.</p></div><a class="open" href="loan-calculator.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-stopwatch"></i></div><div class="meta"><h3>Stopwatch</h3><p>Online stopwatch with laps.</p></div><a class="open" href="stopwatch.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-hourglass"></i></div><div class="meta"><h3>Timer</h3><p>Countdown timer online.</p></div><a class="open" href="timer.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-globe"></i></div><div class="meta"><h3>World Clock</h3><p>World time & time zones.</p></div><a class="open" href="world-clock.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-balance-scale"></i></div><div class="meta"><h3>Unit Converter</h3><p>Convert length, weight & more.</p></div><a class="open" href="unit-converter.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-file-word"></i></div><div class="meta"><h3>Word Counter</h3><p>Count words & characters.</p></div><a class="open" href="word-counter.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-image"></i></div><div class="meta"><h3>Image Compressor</h3><p>Compress images online.</p></div><a class="open" href="image-compressor.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-code"></i></div><div class="meta"><h3>JSON Formatter</h3><p>Format & validate JSON.</p></div><a class="open" href="json-formatter.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-database"></i></div><div class="meta"><h3>Base64 Encoder / Decoder</h3><p>Encode or decode Base64.</p></div><a class="open" href="base64.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-link"></i></div><div class="meta"><h3>URL Encoder</h3><p>Encode & decode URLs.</p></div><a class="open" href="url-encoder.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-random"></i></div><div class="meta"><h3>Random Generator</h3><p>Generate random numbers.</p></div><a class="open" href="random.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-file-pdf"></i></div><div class="meta"><h3>PDF to JPG</h3><p>Convert PDF to images.</p></div><a class="open" href="pdf-to-jpg.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-font"></i></div><div class="meta"><h3>Case Converter</h3><p>Change text case.</p></div><a class="open" href="case-converter.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-exchange-alt"></i></div><div class="meta"><h3>Currency Converter</h3><p>Convert currencies.</p></div><a class="open" href="currency-converter.html">Open</a></div>
+<div class="card"><div class="icon"><i class="fa fa-compress"></i></div><div class="meta"><h3>Minifier</h3><p>Minify HTML, CSS & JS.</p></div><a class="open" href="minifier.html">Open</a></div>
+</section>
+
+<footer>© 2025 MegaToolsOnline — Free Online Tools</footer>
 </div>
+<script>
+function toggleTools(){document.getElementById('tools').classList.toggle('show');}
+</script>
 </body>
 </html>
